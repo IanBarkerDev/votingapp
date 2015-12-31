@@ -156,13 +156,11 @@ app.get("/poll/:poll_id/info", function(req, res) {
 
 // update an existing poll
 app.post("/:username/edit/:poll_id", function(req, res) {
-  console.log("start");
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
   var question = req.body.question;
   var choices = req.body.choices;
-  
   var totalVotes = 0
   var isVisible = req.body.isVisible;
   

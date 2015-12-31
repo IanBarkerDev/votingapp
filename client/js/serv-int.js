@@ -69,7 +69,7 @@ function editPollFormPopulate(poll_id) {
 
 function editPoll(username, poll_id) {
     $.ajax({
-        url: "/" + username + "/edit/ + poll_id",
+        url: "/" + username + "/edit/" + poll_id,
         type: "post",
         
         dataType: "json",
@@ -80,7 +80,7 @@ function editPoll(username, poll_id) {
         },
         
         complete: function(data) {
-            
+            window.location.pathname = "/" + username;
         }
     })
 }

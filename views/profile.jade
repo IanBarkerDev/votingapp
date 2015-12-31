@@ -17,7 +17,6 @@ head
             $(".new-poll-choices-append").append(html);
          })
          
-         
          // clicking on a choice in the add div to delete it
          $(".new-poll-choices-append").on("click", ".choice-appended", function() {
             var index = $(this).attr("data-choice-number");
@@ -26,6 +25,18 @@ head
             
             // removes from html
             $(".new-poll-choices-append").children(".choice-appended[data-choice-number='" + index + "']").remove();
+         })
+         
+         $("#edit-poll-add-choice").on("click", function() {
+   
+            // adds choice to array
+            var choice = $("#edit-poll-choice").val();
+            currentChoices.push({name: choice, votes: 0});
+            
+            // appends choice as an element to new-poll-choices-append div
+            var html = '<button class="choice-appended" data-choice-number="' + choiceNumber + '">' + choice + '</button>';
+            choiceNumber++;
+            $(".edit-poll-choices-append").append(html);
          })
          
          // clicking on a choice in the edit div to delete it
