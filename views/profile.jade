@@ -33,17 +33,17 @@ head
          })
          
          // delete a poll
-         $(".delete-poll").on("click", function() {
+         $(".delete").on("click", function() {
             var poll_id = $(this).parent().attr("id");
             deletePoll(!{JSON.stringify(username)}, poll_id);
          })
          
-         $(".share-poll").on("click", function() {
+         $(".share").on("click", function() {
             var poll_id = $(this).parent().attr("id");
             sharePoll(!{JSON.stringify(username)}, poll_id);
          })
          
-         $(".unshare-poll").on("click", function() {
+         $(".unshare").on("click", function() {
             var poll_id = $(this).parent().attr("id");
             hidePoll(!{JSON.stringify(username)}, poll_id);
          })
@@ -51,6 +51,7 @@ head
 
 body
    h1 #{username}'s Profile
+      button#add-poll Create A New Poll
    
    
    div.container#polls
@@ -58,17 +59,20 @@ body
          each val, index in polls
             div.poll(id=val.poll_id, style="border: 1px solid black")
                p.question= val.question
-               each val2, index in val.choices
-                  div.choice
-                     p= val2.name
-                        span= val2.votes
-               button.delete-poll X
+               button.poll-option.delete
+                  i.fa.fa-minus
+               button.poll-option.edit
+                  i.fa.fa-gear
                if(val.isVisible)
-                  button.unshare-poll Hide
+                  button.poll-option.unshare
+                     i.fa.fa-left-arrow
                else
-                  button.share-poll Share
+                  button.poll-option.share
+                     i.fa.fa-right-arrow
+               button.poll-option.results
+                  i.fa.fa-chart
    
-   div.container#forms
+   div.container#modals
       div.new-poll
          form
             label.form-label(for="new-poll-question") Question:

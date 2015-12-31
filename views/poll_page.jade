@@ -23,8 +23,9 @@ body
       each val, index in choices
          div.choice(id=val.name)
             p= val.name
-               span= val.votes
                button.choice-vote Vote
                
       button#see-results Results
       div.results
+         div.results-list-form
+         div.results-chart-form
