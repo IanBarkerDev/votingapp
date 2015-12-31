@@ -161,6 +161,12 @@ app.post("/:username/edit/:poll_id", function(req, res) {
   
   var question = req.body.question;
   var choices = req.body.choices;
+  
+  // sets all votes back to 0
+  for(var i = 0; i < choices.length; i ++) {
+    choices[i].votes = 0;
+  }
+  
   var totalVotes = 0
   var isVisible = req.body.isVisible;
   
@@ -215,6 +221,7 @@ app.get("/:username/share/:poll_id", function(req, res) {
     }
   }, function(err, doc) {
     if(err) throw err;
+    res.json();
   })
 })
 
@@ -231,6 +238,7 @@ app.get("/:username/unshare/:poll_id", function(req, res) {
     }
   }, function(err, doc) {
     if(err) throw err;
+    res.json();
   })
 })
 
