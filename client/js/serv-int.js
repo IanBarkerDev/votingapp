@@ -40,6 +40,28 @@ function deletePoll(username, poll_id) {
     })
 }
 
+// takes a poll_id and gets the information on it to populate the edit poll form
+function editPollFormPopulate(poll_id) {
+    $.ajax({
+        url: "/poll/" + poll_id + "/info",
+        type: "get",
+        
+        complete: function(data) {
+            data = data.responseJSON;
+            $("#edit-poll-question").val(data.question);
+            choiceNumber = 0;
+            $(".edit-poll-choices-append").empty();
+            
+            $.each(data.choices, function(ind, val) {
+                var html = '<button class="choice-appended" data-choice-number="' + choiceNumber + '">' + val.name + '</button>';
+                choiceNumber++;
+                $(".edit-poll-choices-append").append(html);
+            })
+        }
+    })
+}
+
+
 // takes a poll and sets isVisible to true 
 // (and thus can be viewed by anyone not just 
 // the user logged in)
@@ -93,7 +115,7 @@ function getResults(poll_id) {
 }
 
 function displayResults(totalVotes, choices) {
-    var $results = $(".results");
+    var $results = $(".results-list-form");
     $results.empty();
     $.each(choices, function(ind, val) {
         var para = val.name + ": " + val.votes / totalVotes;

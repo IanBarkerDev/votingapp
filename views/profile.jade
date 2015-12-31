@@ -1,4 +1,5 @@
 head
+   link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
    script(src="/js/serv-int.js")
    
@@ -17,7 +18,7 @@ head
          })
          
          
-         // clicking on a choice in the div to delete it
+         // clicking on a choice in the add div to delete it
          $(".new-poll-choices-append").on("click", ".choice-appended", function() {
             var index = $(this).attr("data-choice-number");
             // removes from array
@@ -25,6 +26,16 @@ head
             
             // removes from html
             $(".new-poll-choices-append").children(".choice-appended[data-choice-number='" + index + "']").remove();
+         })
+         
+         // clicking on a choice in the edit div to delete it
+         $(".edit-poll-choices-append").on("click", ".choice-appended", function() {
+            var index = $(this).attr("data-choice-number");
+            // removes from array
+            currentChoices.splice(index, 1);
+            
+            // removes from html
+            $(".edit-poll-choices-append").children(".choice-appended[data-choice-number='" + index + "']").remove();
          })
          
          // click on add poll sends ajax call to server
@@ -38,6 +49,11 @@ head
             deletePoll(!{JSON.stringify(username)}, poll_id);
          })
          
+         $(".edit").on("click", function() {
+            var poll_id = $(this).parent().attr("id");
+            editPollFormPopulate(poll_id);
+         })
+         
          $(".share").on("click", function() {
             var poll_id = $(this).parent().attr("id");
             sharePoll(!{JSON.stringify(username)}, poll_id);
@@ -46,6 +62,11 @@ head
          $(".unshare").on("click", function() {
             var poll_id = $(this).parent().attr("id");
             hidePoll(!{JSON.stringify(username)}, poll_id);
+         })
+         
+         $(".results").on("click", function() {
+            var poll_id = $(this).parent().attr("id");
+            getResults(poll_id);
          })
       })
 

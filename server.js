@@ -142,6 +142,18 @@ app.post("/:username/add", function(req, res) {
   
 })
 
+// get information on a poll
+app.get("/poll/:poll_id/info", function(req, res) {
+  var poll_id = req.params.poll_id;
+  
+  Poll.findOne({
+    poll_id: poll_id
+  }, function(err, doc) {
+      if(err) throw err;
+      res.json(doc);
+  })
+})
+
 // update an existing poll
 app.post("/:username/edit/:poll_id", function(req, res) {
   var username = req.params.username;
