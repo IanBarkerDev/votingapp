@@ -295,6 +295,8 @@ app.get("/poll/:poll_id/vote/:choice", function(req, res) {
   }, function(err, doc) {
       if(err) throw err;
   })
+  
+  res.json();
 })
 
 // non-author adding option

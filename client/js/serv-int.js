@@ -93,7 +93,7 @@ function voteFor(poll_id, name) {
         type: "get",
         
         complete: function() {
-            console.log("vote for " + name + " complete");
+            getResults(poll_id);
         }
     })
 }
