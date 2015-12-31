@@ -73,15 +73,35 @@ body
                   i.fa.fa-chart
    
    div.container#modals
-      div.new-poll
-         form
-            label.form-label(for="new-poll-question") Question:
-            input.form-input#new-poll-question(type="text")
-            label.form-label(for="new-poll-choices") Choices:
-            input.form-input#new-poll-choice(type="text")
-            button.form-button#new-poll-add-choice(type="button") Add Choice
+      div.modal-div
+         div.new-poll
+            form
+               label.form-label(for="new-poll-question") Question:
+               input.form-input#new-poll-question(type="text")
+               label.form-label(for="new-poll-choices") Choices:
+               input.form-input#new-poll-choice(type="text")
+               button.form-button#new-poll-add-choice(type="button") Add Choice
             
-            div.new-poll-choices-append
+               div.new-poll-choices-append
             
-            button.form-button#new-poll-submit(type="button") Add Poll
+               button.form-button#new-poll-submit(type="button") Add Poll
+               
+         div.edit-poll
+            form
+               label.form-label(for="edit-poll-question") Question:
+               input.form-input#edit-poll-question(type="text")
+               label.form-label(for="edit-poll-choices") Choices:
+               input.form-input#edit-poll-choice(type="text")
+               button.form-button#edit-poll-add-choice(type="button") Add Choice
+            
+               div.edit-poll-choices-append
+            
+               button.form-button#edit-poll-submit(type="button") Edit Poll
+               
+         div.view-results
+            div.results-list-form
+            div.results-chart-form
    
+         div.share-complete
+            p.share-information Poll Successfully
+               span#share-change Hidden/Visible
