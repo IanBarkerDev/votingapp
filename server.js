@@ -156,6 +156,7 @@ app.get("/poll/:poll_id/info", function(req, res) {
 
 // update an existing poll
 app.post("/:username/edit/:poll_id", function(req, res) {
+  console.log("start");
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
@@ -176,6 +177,7 @@ app.post("/:username/edit/:poll_id", function(req, res) {
       }
   }, function(err, doc) {
     if(err) throw err;
+    res.redirect("/" + username);
   })
 })
 

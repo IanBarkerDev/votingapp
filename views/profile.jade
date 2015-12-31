@@ -43,6 +43,12 @@ head
             newPoll(!{JSON.stringify(username)});
          })
          
+         // click on edit poll sends ajax call to server
+         $("#edit-poll-submit").on("click", function() {
+            var poll_id = $(this).parent().attr("data-poll_id");
+            editPoll(!{JSON.stringify(username)}, poll_id);
+         })
+         
          // delete a poll
          $(".delete").on("click", function() {
             var poll_id = $(this).parent().attr("id");
@@ -86,12 +92,12 @@ body
                   i.fa.fa-gear
                if(val.isVisible)
                   button.poll-option.unshare
-                     i.fa.fa-left-arrow
+                     i.fa.fa-arrow-left
                else
                   button.poll-option.share
-                     i.fa.fa-right-arrow
+                     i.fa.fa-arrow-right
                button.poll-option.results
-                  i.fa.fa-chart
+                  i.fa.fa-bar-chart
    
    div.container#modals
       div.modal-div
@@ -108,7 +114,7 @@ body
                button.form-button#new-poll-submit(type="button") Add Poll
                
          div.edit-poll
-            form
+            form(data-poll_id="")
                label.form-label(for="edit-poll-question") Question:
                input.form-input#edit-poll-question(type="text")
                label.form-label(for="edit-poll-choices") Choices:

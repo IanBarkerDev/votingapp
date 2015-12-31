@@ -49,10 +49,15 @@ function editPollFormPopulate(poll_id) {
         complete: function(data) {
             data = data.responseJSON;
             $("#edit-poll-question").val(data.question);
+            $(".edit-poll form").attr("data-poll_id", poll_id);
+            
+            // choices
+            currentChoices = [];
             choiceNumber = 0;
             $(".edit-poll-choices-append").empty();
             
             $.each(data.choices, function(ind, val) {
+                currentChoices.push(val);
                 var html = '<button class="choice-appended" data-choice-number="' + choiceNumber + '">' + val.name + '</button>';
                 choiceNumber++;
                 $(".edit-poll-choices-append").append(html);
@@ -61,6 +66,24 @@ function editPollFormPopulate(poll_id) {
     })
 }
 
+
+function editPoll(username, poll_id) {
+    $.ajax({
+        url: "/" + username + "/edit/ + poll_id",
+        type: "post",
+        
+        dataType: "json",
+        data: {
+            question: $("#edit-poll-question").val(),
+            choices: currentChoices,
+            isVisible: false
+        },
+        
+        complete: function(data) {
+            
+        }
+    })
+}
 
 // takes a poll and sets isVisible to true 
 // (and thus can be viewed by anyone not just 
