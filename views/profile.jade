@@ -1,0 +1,83 @@
+head
+   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+   script(src="/js/serv-int.js")
+   
+   script.
+      $(document).ready(function() {
+         $("#new-poll-add-choice").on("click", function() {
+   
+            // adds choice to array
+            var choice = $("#new-poll-choice").val();
+            currentChoices.push({name: choice, votes: 0});
+            
+            // appends choice as an element to new-poll-choices-append div
+            var html = '<button class="choice-appended" data-choice-number="' + choiceNumber + '">' + choice + '</button>';
+            choiceNumber++;
+            $(".new-poll-choices-append").append(html);
+         })
+         
+         
+         // clicking on a choice in the div to delete it
+         $(".new-poll-choices-append").on("click", ".choice-appended", function() {
+            var index = $(this).attr("data-choice-number");
+            // removes from array
+            currentChoices.splice(index, 1);
+            
+            // removes from html
+            $(".new-poll-choices-append").children(".choice-appended[data-choice-number='" + index + "']").remove();
+         })
+         
+         // click on add poll sends ajax call to server
+         $("#new-poll-submit").on("click", function() {
+            newPoll(!{JSON.stringify(username)});
+         })
+         
+         // delete a poll
+         $(".delete-poll").on("click", function() {
+            var poll_id = $(this).parent().attr("id");
+            deletePoll(!{JSON.stringify(username)}, poll_id);
+         })
+         
+         $(".share-poll").on("click", function() {
+            var poll_id = $(this).parent().attr("id");
+            sharePoll(!{JSON.stringify(username)}, poll_id);
+         })
+         
+         $(".unshare-poll").on("click", function() {
+            var poll_id = $(this).parent().attr("id");
+            hidePoll(!{JSON.stringify(username)}, poll_id);
+         })
+      })
+
+body
+   h1 #{username}'s Profile
+   
+   
+   div.container#polls
+      if(isVisible)
+         each val, index in polls
+            div.poll(id=val.poll_id, style="border: 1px solid black")
+               p.question= val.question
+               each val2, index in val.choices
+                  div.choice
+                     p= val2.name
+                        span= val2.votes
+               button.delete-poll X
+               if(val.isVisible)
+                  button.unshare-poll Hide
+               else
+                  button.share-poll Share
+   
+   div.container#forms
+      div.new-poll
+         form
+            label.form-label(for="new-poll-question") Question:
+            input.form-input#new-poll-question(type="text")
+            label.form-label(for="new-poll-choices") Choices:
+            input.form-input#new-poll-choice(type="text")
+            button.form-button#new-poll-add-choice(type="button") Add Choice
+            
+            div.new-poll-choices-append
+            
+            button.form-button#new-poll-submit(type="button") Add Poll
+   
