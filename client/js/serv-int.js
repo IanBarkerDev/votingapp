@@ -141,7 +141,7 @@ function displayResults(totalVotes, choices) {
     var $results = $(".results-list-form");
     $results.empty();
     $.each(choices, function(ind, val) {
-        var para = val.name + ": " + val.votes / totalVotes;
+        var para = val.name + ": " + +(val.votes / totalVotes).toFixed(2);
         
         var html = "<p>" + para + "</p>";
         $results.append(html);

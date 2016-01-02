@@ -2,6 +2,7 @@ var express = require("express");
 var mongoose = require("mongoose");
 var bodyparser = require("body-parser");
 var path = require("path");
+var cookieParser = require("cookie-parser")
 
 mongoose.connect("mongodb://localhost/votingapp");
 
@@ -12,7 +13,7 @@ var app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
-//app.use(express.cookieParser());
+app.use(express.cookieParser());
 app.use(express.static(path.resolve(__dirname, 'client'), {redirect: false}));
 
 app.set("views", "./views");
@@ -32,6 +33,7 @@ app.post("/login", function(req, res) {
   }, function(err, doc) {
       if(err) throw err;
       if(doc.password === password) {
+          res.cookies("username", username);
           res.redirect("/" + username);
       } else {
           //TODO: login unsuccessful

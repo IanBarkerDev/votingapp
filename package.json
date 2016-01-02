@@ -6,6 +6,7 @@
   "author": "Mostafa Eweda <mo.eweda@gmail.com>",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "mongodb": "^2.1.2",
