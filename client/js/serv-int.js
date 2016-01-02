@@ -15,7 +15,7 @@ function newPoll(username) {
             choices: currentChoices
         },
         
-        complete: function() {
+        success: function() {
             console.log("new poll added");
         }
     })
@@ -34,7 +34,7 @@ function deletePoll(username, poll_id) {
         url: "/" + username + "/delete/" + poll_id,
         type: "get",
         
-        complete: function() {
+        success: function() {
             console.log("poll " + poll_id + " deleted");
         }
     })
@@ -46,7 +46,7 @@ function editPollFormPopulate(poll_id) {
         url: "/poll/" + poll_id + "/info",
         type: "get",
         
-        complete: function(data) {
+        success: function(data) {
             data = data.responseJSON;
             $("#edit-poll-question").val(data.question);
             $(".edit-poll form").attr("data-poll_id", poll_id);
@@ -79,7 +79,7 @@ function editPoll(username, poll_id) {
             isVisible: false
         },
         
-        complete: function(data) {
+        success: function(data) {
             window.location.pathname = "/" + username;
         }
     })
@@ -93,7 +93,7 @@ function sharePoll(username, poll_id) {
         url: "/" + username + "/share/" + poll_id,
         type: "get",
         
-        complete: function() {
+        success: function() {
             $("#share-change").html(" made visible.");
         }
     })
@@ -104,7 +104,7 @@ function hidePoll(username, poll_id) {
         url: "/" + username + "/unshare/" + poll_id,
         type: "get",
         
-        complete: function() {
+        success: function() {
             $("#share-change").html(" hidden.");
         }
     })
@@ -115,7 +115,7 @@ function voteFor(poll_id, name) {
         url: "/poll/" + poll_id + "/vote/" + name,
         type: "get",
         
-        complete: function() {
+        success: function() {
             getResults(poll_id);
         }
     })
@@ -126,7 +126,7 @@ function getResults(poll_id) {
         url: "/poll/" + poll_id + "/results",
         type: "get",
         
-        complete: function(data) {
+        success: function(data) {
             data = data.responseJSON;
             
             var totalVotes = data.totalVotes;
