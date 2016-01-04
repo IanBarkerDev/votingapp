@@ -13,7 +13,7 @@ var app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
-app.use(express.cookieParser());
+app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, 'client'), {redirect: false}));
 
 app.set("views", "./views");
@@ -32,11 +32,20 @@ app.post("/login", function(req, res) {
       username: username
   }, function(err, doc) {
       if(err) throw err;
-      if(doc.password === password) {
-          res.cookies("username", username);
+      
+      // if username doesn't exist
+      if(doc === null) {
+        res.redirect("/login.html?incorrect=" + encodeURIComponent("username"));
+      }
+      
+      // if all goes well
+      else if(doc.password === password) {
+          res.cookie("logged", username);
           res.redirect("/" + username);
+      
+      // if password incorrect
       } else {
-          //TODO: login unsuccessful
+          res.redirect("/login.html?incorrect=" + encodeURIComponent("password"));
       }
   })
 })
@@ -48,7 +57,21 @@ app.post("/signup", function(req, res) {
   var password = req.body.password;
   var con_password = req.body.con_password;
   
-  //TODO: passwords and con_password not equal
+  User.findOne({
+    username: username
+  }, function(err, doc) {
+    if(err) throw err;
+    
+    if(doc !== null) {
+      // username already taken
+      res.redirect("/signup.html?incorrect=username");
+    } else if(password !== con_password) {
+      // passwords don't match
+      res.redirect("/signup.html?incorrect=password");
+    } //TODO: if email doesn't exist; redirect back incorrect=email
+  })
+  
+  // everything right; create user
   
   var user = new User({
       username: username,
@@ -59,6 +82,7 @@ app.post("/signup", function(req, res) {
   })
   
   user.save();
+  res.cookie("logged", username);
   res.redirect("/" + username);
 })
 
@@ -107,7 +131,6 @@ app.get("/poll/:poll_id", function(req, res) {
 // add a new poll
 /* 
 * need question
-* num_choices
 * choices in an array
 */
 app.post("/:username/add", function(req, res) {
@@ -263,14 +286,12 @@ app.get("/:username/results/:poll_id", function(req, res) {
 
 // general results (on request or post voting)
 app.get("/poll/:poll_id/results", function(req, res) {
-  var username = req.params.username;
   var poll_id = req.params.poll_id;
   
   Poll.findOne({
     poll_id: poll_id
   }, function(err, doc) {
     if(err) throw err;
-    
     res.json({
       choices: doc.choices,
       totalVotes: doc.totalVotes
@@ -279,6 +300,11 @@ app.get("/poll/:poll_id/results", function(req, res) {
 })
 
 // record vote in poll
+// this is an awful way of doing this
+// need to store choices also with an id instead of just doing everything by strings
+// numbers >> strings
+// it also doesn't work in multi word choices (uhoh)
+// TODO
 app.get("/poll/:poll_id/vote/:choice", function(req, res) {
   var poll_id = req.params.poll_id;
   
@@ -304,9 +330,8 @@ app.get("/poll/:poll_id/vote/:choice", function(req, res) {
     }
   }, function(err, doc) {
       if(err) throw err;
+      res.end();
   })
-  
-  res.json();
 })
 
 // non-author adding option
@@ -315,6 +340,9 @@ app.post("/poll/:poll_id/new", function(req, res) {
   var name = req.body.name;
   
   // if user = logged in
+  
+
+  
   Poll.update({
     poll_id: poll_id
   }, {
@@ -323,9 +351,12 @@ app.post("/poll/:poll_id/new", function(req, res) {
         name: name,
         votes: 1
       }
+    }, $inc: {
+      totalVotes: 1
     }
   }, function(err, doc) {
       if(err) throw err;
+      res.status(200).json({status:"ok"})
   })
 })
 

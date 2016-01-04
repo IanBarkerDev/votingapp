@@ -13,6 +13,14 @@ head
          $("#see-results").on("click", function() {
             getResults(!{JSON.stringify(poll_id)});
          })
+         
+         $("#choice-add").on("click", function() {
+            $("#choice-add-form").slideToggle();
+         })
+         
+         $("#choice-add-button").on("click", function() {
+           addAuthChoice($("#choice-add-input").val(), !{JSON.stringify(poll_id)});
+         })
       })
    
 body
@@ -21,13 +29,23 @@ body
       h2 by #{username}
    
       div#poll
-         p#question #{question}
-         each val, index in choices
-            div.choice(id=val.name)
-               p= val.name
-                  button.choice-vote Vote
+         div#poll-choices
+            p#question #{question}
+            each val, index in choices
+               div.choice(id=val.name)
+                  p= val.name
+                     button.choice-vote Vote
+                  
+            // if logged in user doesn't equal owner of poll
+         
+         if(logged !== username)
+            button#choice-add Add New Choice
+            form#choice-add-form
+               label.form-label(for="choice-add-input") Choice:
+               input.form-input#choice-add-input(type="text")
+               button.form-button#choice-add-button(type="button") Add
                
-         button#see-results Results
+         button#see-results(type="button") Results
          div.results
             div.results-list-form
             div.results-chart-form

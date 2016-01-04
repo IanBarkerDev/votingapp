@@ -116,6 +116,8 @@ function voteFor(poll_id, name) {
         type: "get",
         
         success: function() {
+            // hide all the vote options
+            $(".choice-vote").css("display", "none");
             getResults(poll_id);
         }
     })
@@ -127,8 +129,6 @@ function getResults(poll_id) {
         type: "get",
         
         success: function(data) {
-            data = data.responseJSON;
-            
             var totalVotes = data.totalVotes;
             var choices = data.choices;
             
@@ -145,5 +145,28 @@ function displayResults(totalVotes, choices) {
         
         var html = "<p>" + para + "</p>";
         $results.append(html);
+    })
+}
+
+function addAuthChoice(str, poll_id) {
+    $.ajax({
+        url: "/poll/" + poll_id + "/new",
+        type: "post",
+        dataType: "json",
+        data: {
+            name: str
+        },
+        
+        success: function() {
+            // add new choice to list on page (already added in database)
+            var html = '<div class="choice" id="' + str + '"><p>' + str + '<button class="choice-vote">Vote</button></p></div>';
+            $("#poll-choices").append(html);
+            
+            // hide all the vote options
+            $(".choice-vote").css("display", "none");
+            
+            // get results
+            getResults(poll_id);
+        }
     })
 }

@@ -1,5 +1,5 @@
 <head>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -12,4 +12,32 @@
         
         <button type="submit">Log In</button>
     </form>
+    
+    
+    <script>
+      $(document).ready(function() {
+          // if there are search parameters
+          if(window.location.search) {
+              // get rid of ?
+              var url = window.location.search.substr(1);
+              // divide into array for each "x=y"
+              var uriArr = url.split("&");
+              // for each of those (in this case 1)
+              for(var i = 0; i < uriArr.length; i ++) {
+                  // take "x=y" and split into x and y
+                  var arr = uriArr[i].split("=");
+                  // the x
+                  if(arr[0] === "incorrect") {
+                      // the y
+                      if(arr[1] === "username") {
+                          $("#username").addClass("form-input-error");
+                      // another y
+                      } else if (arr[1] === "password") {
+                          $("#password").addClass("form-input-error");
+                      }
+                  } 
+              }
+          }
+      })
+    </script>
 </body>
