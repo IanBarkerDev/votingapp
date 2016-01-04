@@ -28,7 +28,7 @@ head
       })
    
 body
-   if(isVisible)
+   if(isVisible || (logged === username))
       div.top-nav
          h1 #{question}
          h2 by #{username}
@@ -39,6 +39,9 @@ body
             a(href="/login.html") Log In
             span.line-inbetween-login-signup |
             a(href="/signup.html") Sign Up
+            
+         if(isVisible && (logged === username))
+            p Poll not visible to other users. Share on your profile page.
    
       div#poll
          div#poll-choices
