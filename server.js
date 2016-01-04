@@ -123,7 +123,8 @@ app.get("/poll/:poll_id", function(req, res) {
           question: doc.question,
           choices: doc.choices,
           totalVotes: doc.totalVotes,
-          isVisible: doc.isVisible
+          isVisible: doc.isVisible,
+          logged: req.cookies.logged
       })
   })
 })

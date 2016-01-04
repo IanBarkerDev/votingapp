@@ -86,11 +86,18 @@ head
             var poll_id = $(this).parent().attr("id");
             getResults(poll_id);
          })
+         
+         $("#logout").on("click", function() {
+            userLogout();
+         })
       })
 
 body
-   h1 #{username}'s Profile
+   div.top-nav
+      h1 #{username}'s Profile
       button#add-poll Create A New Poll
+      if(logged)
+         button#logout Log Out
    
    
    div.container#polls

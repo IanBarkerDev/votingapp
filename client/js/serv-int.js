@@ -170,3 +170,8 @@ function addAuthChoice(str, poll_id) {
         }
     })
 }
+
+function userLogout() {
+    document.cookie = "logged=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    window.location.pathname = "/";
+}

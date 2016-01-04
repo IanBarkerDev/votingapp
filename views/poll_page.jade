@@ -21,12 +21,20 @@ head
          $("#choice-add-button").on("click", function() {
            addAuthChoice($("#choice-add-input").val(), !{JSON.stringify(poll_id)});
          })
+         
+         $("#logout").on("click", function() {
+            userLogout();
+         })
       })
    
 body
    if(isVisible)
-      h1 #{question}
-      h2 by #{username}
+      div.top-nav
+         h1 #{question}
+         h2 by #{username}
+         
+         if(logged)
+            button#logout Log Out
    
       div#poll
          div#poll-choices
