@@ -223,7 +223,6 @@ app.get("/:username/delete/:poll_id", function(req, res) {
     if(err) throw err;
   })
   
-  //TODO: source of failure high here
   User.update({
     username: username
   }, {
@@ -232,6 +231,7 @@ app.get("/:username/delete/:poll_id", function(req, res) {
     }
   }, function(err, doc) {
     if(err) throw err;
+    res.end();
   })
 })
 

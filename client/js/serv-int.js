@@ -35,7 +35,7 @@ function deletePoll(username, poll_id) {
         type: "get",
         
         success: function() {
-            console.log("poll " + poll_id + " deleted");
+            window.location.pathname = "/" + username;
         }
     })
 }
@@ -47,7 +47,6 @@ function editPollFormPopulate(poll_id) {
         type: "get",
         
         success: function(data) {
-            data = data.responseJSON;
             $("#edit-poll-question").val(data.question);
             $(".edit-poll form").attr("data-poll_id", poll_id);
             
