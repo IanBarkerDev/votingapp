@@ -103,7 +103,8 @@ app.get("/:username", function(req, res) {
         res.render("profile", {
           username: doc.username,
           polls: polls,
-          isVisible: doc.isVisible
+          isVisible: doc.isVisible,
+          logged: req.cookies.logged
         })
       })
   })
