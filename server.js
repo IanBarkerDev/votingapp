@@ -248,7 +248,7 @@ app.get("/:username/share/:poll_id", function(req, res) {
     }
   }, function(err, doc) {
     if(err) throw err;
-    res.json();
+    res.end();
   })
 })
 
@@ -265,7 +265,7 @@ app.get("/:username/unshare/:poll_id", function(req, res) {
     }
   }, function(err, doc) {
     if(err) throw err;
-    res.json();
+    res.end();
   })
 })
 

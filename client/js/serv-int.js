@@ -94,7 +94,7 @@ function sharePoll(username, poll_id) {
         type: "get",
         
         success: function() {
-            $("#share-change").html(" made visible.");
+            window.location.pathname = "/" + username;
         }
     })
 }
@@ -105,7 +105,7 @@ function hidePoll(username, poll_id) {
         type: "get",
         
         success: function() {
-            $("#share-change").html(" hidden.");
+            window.location.pathname = "/" + username;
         }
     })
 }
