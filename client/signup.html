@@ -1,23 +1,37 @@
 <head>
+    <title>Sign Up</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link type="css/text" rel="stylesheet" href="/css/login-signup.css">
 </head>
 
 <body>
-    <form action="/signup" method="post">
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username"/>
-        
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password"/>
-        
-        <label for="con_password">Confirm Password:</label>
-        <input id="con_password" type="password" name="con_password"/>
-        
-        <label for="email">Email:</label>
-        <input id="email" type="email" name="email"/>
-        
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="container-fluid" id="login-signup">
+        <div class="container">
+            <h1>Sign Up</h1>
+            <div class="div-form">
+                <form action="/signup" method="post">
+                    <label class="form-label" for="username">Username:</label>
+                    <br>
+                    <input class="form-input" id="username" type="text" name="username"/>
+                    <br>
+                    <label class="form-label" for="password">Password:</label>
+                    <br>
+                    <input class="form-input" id="password" type="password" name="password"/>
+                    <br>
+                    <label class="form-label" for="con_password">Confirm Password:</label>
+                    <br>
+                    <input class="form-input" id="con_password" type="password" name="con_password"/>
+                    <br>
+                    <label class="form-label" for="email">Email:</label>
+                    <br>
+                    <input class="form-input" id="email" type="email" name="email"/>
+                    <br>
+                    <button class="form-button" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
     
     <script>
         $(document).ready(function() {

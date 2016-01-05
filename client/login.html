@@ -1,18 +1,29 @@
 <head>
+    <title>Log In</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link type="css/text" rel="stylesheet" href="/css/login-signup.css">
 </head>
 
 <body>
-    <form action="/login" method="post">
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username"/>
-        
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password"/>
-        
-        <button type="submit">Log In</button>
-    </form>
-    
+    <div class="container-fluid" id="login-signup">
+        <div class="container">
+            <h1>Log In</h1>
+            <div class="div-form">
+                <form action="/login" method="post">
+                    <label class="form-label" for="username">Username:</label>
+                    <br>
+                    <input id="username" type="text" name="username"/>
+                    <br>
+                    <label class="form-label" for="password">Password:</label>
+                    <br>
+                    <input id="password" type="password" name="password"/>
+                    <br>
+                    <button class="form-button" type="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
     
     <script>
       $(document).ready(function() {
