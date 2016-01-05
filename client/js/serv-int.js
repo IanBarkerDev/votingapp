@@ -84,6 +84,7 @@ function editPoll(username, poll_id) {
     })
 }
 
+
 // takes a poll and sets isVisible to true 
 // (and thus can be viewed by anyone not just 
 // the user logged in)

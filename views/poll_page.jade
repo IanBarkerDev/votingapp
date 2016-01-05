@@ -29,41 +29,42 @@ head
    
 body
    if(isVisible || (logged === username))
-      div.top-nav
-         h1 #{question}
-         h2 by #{username}
+      div.container-fluid#top
+         div.container
+            div.top-nav
+               h1 #{question}
+               h2 by #{username}
          
-         if(logged)
-            button#logout Log Out
-         else
-            a(href="/login.html") Log In
-            span.line-inbetween-login-signup |
-            a(href="/signup.html") Sign Up
-            
-         if(isVisible && (logged === username))
-            p Poll not visible to other users. Share on your profile page.
-   
-      div#poll
-         div#poll-choices
-            p#question #{question}
-            each val, index in choices
-               div.choice(id=val.name)
-                  p= val.name
-                     button.choice-vote Vote
+               if(logged)
+                  button.top-nav-button#logout Log Out
+               else
+                  a.top-nav-button(href="/login.html") Log In
+                  span.line-inbetween-login-signup |
+                  a.top-nav-button(href="/signup.html") Sign Up
+      div.container-fluid#bottom
+         div.container
+            div#poll
+               div#poll-choices
+                  p#question #{question}
+                  each val, index in choices
+                     div.choice(id=val.name)
+                        p= val.name
+                           button.choice-vote Vote
                   
-            // if logged in user doesn't equal owner of poll
+                  // if logged in user doesn't equal owner of poll
          
-         if(logged !== username)
-            button#choice-add Add New Choice
-            form#choice-add-form
-               label.form-label(for="choice-add-input") Choice:
-               input.form-input#choice-add-input(type="text")
-               button.form-button#choice-add-button(type="button") Add
+               if(logged !== username)
+                  button#choice-add Add New Choice
+                  form#choice-add-form
+                     label.form-label(for="choice-add-input") Choice:
+                     input.form-input#choice-add-input(type="text")
+                     button.form-button#choice-add-button(type="button") Add
                
-         button#see-results(type="button") Results
-         div.results
-            div.results-list-form
-            div.results-chart-form
-            
+               button#see-results(type="button") Results
+               div.results
+                  div.results-list-form
+                  div.results-chart-form
+   else if(!isVisible && (logged === username))
+         h4 Poll not visible to other users. Share on your profile page.       
    else
       h4 Poll is unable to be viewed at this time.

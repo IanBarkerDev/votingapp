@@ -82,6 +82,11 @@ head
             editPoll(!{JSON.stringify(username)}, poll_id);
          })
          
+         // click on a poll and go to the poll page
+         $(".poll").on("click", function() {
+            window.location.pathname = "/poll/" + $(this).attr("id");
+         })
+         
          // delete a poll
          $(".delete").on("click", function() {
             var poll_id = $(this).parent().attr("id");
