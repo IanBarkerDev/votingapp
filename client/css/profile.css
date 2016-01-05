@@ -137,6 +137,10 @@ body {
     display: none;
 }
 
+.view-results h3 {
+    margin-top: 0;
+}
+
 .indiv-modal {
     background-color: gray;
     position: fixed;
@@ -145,7 +149,7 @@ body {
     
     padding: 20px 5px;
     
-    width: 10%;
+    min-width: 300px;
 }
 
 .indiv-modal .form-label {
@@ -158,4 +162,20 @@ body {
     margin: 3px 0;
 }
 
+.results-list-form {
+    color: #fff;
+    width: 50%;
+    float: left;
+}
+
+.results-list-form .results-percentage {
+    float: right;
+}
+
+.results-chart-form {
+    width: 50%;
+    float: right;
+    padding-left: 5px;
+    
+}
 

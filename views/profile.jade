@@ -4,6 +4,9 @@ head
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
    link(rel="stylesheet", href="/css/profile.css")
    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+   script(type="text/javascript", src="https://www.google.com/jsapi")
+   script(type="text/javascript").
+      google.load('visualization', '1.0', {'packages':['corechart']});
    script(src="/js/serv-int.js")
    
    script.
@@ -183,5 +186,6 @@ body
                button.form-button#edit-poll-submit(type="button") Edit Poll
                
          div.view-results.indiv-modal
+            h3 Results
             div.results-list-form
-            div.results-chart-form                                  
+            div.results-chart-form#chart                                  

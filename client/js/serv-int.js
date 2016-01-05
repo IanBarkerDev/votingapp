@@ -140,11 +140,30 @@ function displayResults(totalVotes, choices) {
     var $results = $(".results-list-form");
     $results.empty();
     $.each(choices, function(ind, val) {
-        var para = val.name + ": " + +(val.votes / totalVotes).toFixed(2);
+        var para = val.name + ": <span class='results-percentage'>" + +(val.votes / totalVotes * 100).toFixed(2) + "%</span>";
         
         var html = "<p>" + para + "</p>";
         $results.append(html);
     })
+    
+    googlePieChart(choices);
+}
+
+function googlePieChart(choices) {
+    drawChart(choices)
+    function drawChart() {
+        var arr = [["Choice", "Votes"]];
+        $.each(choices, function(ind, val) {
+            arr.push([val.name, val.votes]);
+        })
+        var data = google.visualization.arrayToDataTable(arr);
+        var options = {
+          title: 'Poll Results'
+        };
+        
+        var chart = new google.visualization.PieChart(document.getElementById("chart"));
+        chart.draw(data, options);
+     }
 }
 
 function addAuthChoice(str, poll_id) {
