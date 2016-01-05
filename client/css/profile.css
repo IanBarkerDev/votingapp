@@ -4,3 +4,158 @@
 * used for profile.jade
 */
 
+body {
+    background-color: #add8e6;
+}
+
+/* header */
+#header {
+    margin-top: 100px;
+}
+
+.header {
+    position: relative
+}
+
+.header-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.header-button {
+    margin: 5px;
+    color: #000000;
+    background-color: #C1ECFA;
+    border: none;
+    border-radius: 10px;
+}
+
+.header-button:hover {
+    background-color: #B7E2F0;
+}
+
+/* polls */
+#polls {
+    margin: 10px auto;
+}
+
+.poll {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    
+    vertical-align: middle;
+    
+    margin: 5px;
+    border: 1px inset #000;
+    background-color: #8FBAC8;
+    position: relative;
+}
+
+.question {
+    text-align: center;
+
+}
+
+.poll-option {
+    width: 20px;
+    height: 20px;
+    border: none;
+    padding: 0;
+    background: #fff;
+    position: absolute;
+    display: none;
+}
+
+.poll:hover .poll-option {
+    display: block;
+}
+
+.delete {
+    bottom: 0;
+    left: 0;
+    
+    border-top-right-radius: 5px;
+}
+
+.edit {
+    bottom: 0;
+    right: 0;
+    
+    border-top-left-radius: 5px;
+}
+
+.unshare {
+    top: 0;
+    right: 0;
+    
+    border-bottom-left-radius: 5px;
+}
+
+.share {
+    top: 0;
+    right: 0;
+    
+    border-bottom-left-radius: 5px;
+}
+
+.results {
+    top: 0;
+    left: 0;
+    
+    border-bottom-right-radius: 5px;
+}
+
+/* modals */
+.modal-div {
+    display: none;
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+    
+    height: 100%;
+    width: 100%;
+    
+    background-color: rgba(0,0,0,.6);
+}
+
+.container {
+    position: relative;
+}
+
+.new-poll {
+    display: none;
+}
+
+.edit-poll {
+    display: none;
+}
+
+.view-results {
+    display: none;
+}
+
+.indiv-modal {
+    background-color: gray;
+    position: fixed;
+    left: 40%;
+    top: 40%;
+    
+    padding: 20px 5px;
+    
+    width: 10%;
+}
+
+.indiv-modal .form-label {
+    float: left;
+    margin: 3px 0;
+}
+
+.indiv-modal .form-input {
+    float: right;
+    margin: 3px 0;
+}
+
+
