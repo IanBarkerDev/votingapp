@@ -1,0 +1,128 @@
+/*
+* index.css
+* Ian Barker
+* used for index.jade
+*/
+
+body {
+    background-color: #add8e6;
+    color: #ffffff;
+}
+
+.container-auto {
+    margin: 0 auto;
+}
+
+#top {
+    height: 40vh;
+}
+
+h1 {
+    margin-top: 100px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* navigation-bar */
+.navigation-bar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    
+    background: inherit;
+}
+
+.navigation-bar-button {
+    color: #0645ad;
+    margin: 0 5px;
+}
+
+.navigation-bar-button:hover {
+    color: #0b0080;
+    cursor: pointer;
+}
+
+#bottom {
+    height: 60vh;
+  
+}
+
+#featuresLinks {
+    background-color: #435187;  
+    padding-bottom: 20px;
+}
+
+/* features */
+.features {
+    margin: 10px auto;
+    
+
+}
+
+.feature-block {
+    width: 33%;
+    display: inline-block;
+}
+
+.feature {
+    color: #ffffff;
+    background-color: #4e556a;
+    
+    border: 2px inset #323644;
+    border-radius: 5px;
+    
+    font-size: 14px;
+    width: 150px;
+    height: 150px;
+    
+    margin: 10px auto;
+    
+    display: table;
+    
+   
+}
+
+.feature p {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* links */
+.links {
+    margin: 5px auto;
+    text-align: center;
+}
+
+.links p {
+    font-size: 17px;
+    margin: 15px;
+}
+
+.links .button {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 5px;
+    margin: 3px 0;
+    font-size: 17px;
+}
+
+.button-right-rounded {
+    border-radius: 0 10px 10px 0;
+}
+
+#signupLinks {
+    background-color: #aff189;
+}
+
+#signupLinks:hover {
+    background-color: #709a58;
+}
+
+#loginLinks {
+    background-color: #f4b448;
+}
+
+#loginLinks:hover {
+    background-color: #c3903a;
+}

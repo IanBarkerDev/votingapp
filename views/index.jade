@@ -1,8 +1,32 @@
 head
    title Voting App
+   
+   link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+   link(type="css/text", rel="stylesheet", href="/css/index.css")
+
   
 body
-   h1 Welcome to Voting App
-   div.login-signup-box
-      a(href="./login.html") Log In
-      a(href="./signup.html") Sign Up
+   div.container-fluid#top
+      div.container
+         h1 Welcome to Voting App!
+         div.navigation-bar
+            a.navigation-bar-button#loginFixed(href="/login.html")
+            span.divider |
+            a.navigation-bar-button#signupFixed(href="/signup.html")
+   div.container-fluid#bottom
+      div.container#featuresLinks
+         div.features
+            div.feature-block
+               div.feature
+                  p Easy to make polls and edit them instantly.
+            div.feature-block
+               div.feature
+                  p Share them with anyone with the click of a button whether they're registered or not.
+            div.feature-block
+               div.feature
+                  p View results in multiple ways.
+         div.links
+            p Ready To Get Started?
+            a.button.button-right-rounded#signupLinks(href="/signup.html") Sign Up Now!
+            p Already have an account?
+            a.button.button-right-rounded#loginLinks(href="/login.html") Log In Here!
