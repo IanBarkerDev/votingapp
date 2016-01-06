@@ -29,10 +29,12 @@ body {
     background-color: #C1ECFA;
     border: none;
     border-radius: 10px;
+    padding: 5px;
 }
 
 .header-button:hover {
     background-color: #B7E2F0;
+    text-decoration: none;
 }
 
 /* polls */

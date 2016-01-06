@@ -159,7 +159,13 @@ function googlePieChart(choices) {
         })
         var data = google.visualization.arrayToDataTable(arr);
         var options = {
-          title: 'Poll Results'
+            backgroundColor: "none",
+            chartArea: {
+                top: "10%",
+                right: "10%",
+                bottom: "10%",
+                left: "10%"
+            }
         };
         
         var chart = new google.visualization.PieChart(document.getElementById("chart"));

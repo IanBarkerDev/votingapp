@@ -4,62 +4,102 @@
 * used for poll_page.jade
 */
 
+body {
+    background-color: #add8e6;
+}
+
 #top {
-    
+    margin-top: 100px;
 }
 
 .top-nav {
-    
+    width: 100%;
+    position: relative;
+}
+
+.top-nav-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .top-nav-button {
-    
+    margin: 5px;
+    padding: 5px;
+    color: #000000;
+    background-color: #C1ECFA;
+    border: none;
+    border-radius: 10px;
+}
+
+.top-nav-button:hover {
+    background-color: #B7E2F0;
+    text-decoration: none;
 }
 
 #bottom {
-    
+    margin: 20px;
+}
+
+#poll {
+    background-color: #ffffb3;
+    margin: 0 30px;
 }
 
 #poll-choices {
-    
+    margin: 0 30px;
+    padding-top: 30px;
 }
 
-.choice {
-    
+.question {
+    font-weight: bold;
+    font-size: 18px;
 }
 
-.choice-vote {
-    
+.choice .choice-vote {
+    float: right;
+}
+
+.new-choice-add {
+    text-align: center;
 }
 
 #choice-add {
-    
+    margin-bottom: 5px;
+}
+
+#choice-add-form {
+    display: none;
 }
 
 .form-label {
-    
+    margin: 3px;
 }
 
 .form-input {
-    
+    margin: 3px;
 }
 
-.form-button {
-    
-}
-
-#see-results {
-    
+.results-button {
+    text-align: center;
+    background-color: #ffffb3;
 }
 
 .results {
-    
+    overflow: auto;
 }
 
-.resultes-list-form {
-    
+.results-list-form {
+    width: 50%;
+    float: left;
+}
+
+.results-list-form .results-percentage {
+    float: right;
 }
 
 .results-chart-form {
-    
+    width: 50%;
+    float: right;
+    padding-left: 5px;
 }
