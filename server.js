@@ -4,7 +4,7 @@ var bodyparser = require("body-parser");
 var path = require("path");
 var cookieParser = require("cookie-parser")
 
-mongoose.connect("mongodb://localhost/votingapp");
+mongoose.connect("mongodb://dbadmin:slightpushmargingreat@ds039115.mongolab.com:39115/votingappdb");
 
 var User = require("./app/models/user.js");
 var Poll = require("./app/models/poll.js");
