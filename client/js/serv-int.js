@@ -6,7 +6,7 @@ var choiceNumber = 0;
 function newPoll(username) {
     
     $.ajax({
-        url: "/" + username + "/add",
+        url: "/user/" + username + "/add",
         type: "post",
         
         dataType: "json",
@@ -31,7 +31,7 @@ function newPoll(username) {
 // and from the users list of polls
 function deletePoll(username, poll_id) {
     $.ajax({
-        url: "/" + username + "/delete/" + poll_id,
+        url: "/user/" + username + "/delete/" + poll_id,
         type: "get",
         
         success: function() {
@@ -68,7 +68,7 @@ function editPollFormPopulate(poll_id) {
 
 function editPoll(username, poll_id) {
     $.ajax({
-        url: "/" + username + "/edit/" + poll_id,
+        url: "/user/" + username + "/edit/" + poll_id,
         type: "post",
         
         dataType: "json",
@@ -90,7 +90,7 @@ function editPoll(username, poll_id) {
 // the user logged in)
 function sharePoll(username, poll_id) {
     $.ajax({
-        url: "/" + username + "/share/" + poll_id,
+        url: "/user/" + username + "/share/" + poll_id,
         type: "get",
         
         success: function() {
@@ -101,7 +101,7 @@ function sharePoll(username, poll_id) {
 
 function hidePoll(username, poll_id) {
     $.ajax({
-        url: "/" + username + "/unshare/" + poll_id,
+        url: "/user/" + username + "/unshare/" + poll_id,
         type: "get",
         
         success: function() {

@@ -41,7 +41,7 @@ app.post("/login", function(req, res) {
       // if all goes well
       else if(doc.password === password) {
           res.cookie("logged", username);
-          res.redirect("/" + username);
+          res.redirect("/user/" + username);
       
       // if password incorrect
       } else {
@@ -83,11 +83,11 @@ app.post("/signup", function(req, res) {
   
   user.save();
   res.cookie("logged", username);
-  res.redirect("/" + username);
+  res.redirect("/user/" + username);
 })
 
 // profile page (unique username)
-app.get("/:username", function(req, res) {
+app.get("/user/:username", function(req, res) {
   var username = req.params.username;
   
   User.findOne({
@@ -135,7 +135,7 @@ app.get("/poll/:poll_id", function(req, res) {
 * need question
 * choices in an array
 */
-app.post("/:username/add", function(req, res) {
+app.post("/user/:username/add", function(req, res) {
   var username = req.params.username;
   
   var poll_id = Math.floor(Math.random() * 1000);
@@ -182,7 +182,7 @@ app.get("/poll/:poll_id/info", function(req, res) {
 })
 
 // update an existing poll
-app.post("/:username/edit/:poll_id", function(req, res) {
+app.post("/user/:username/edit/:poll_id", function(req, res) {
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
@@ -213,7 +213,7 @@ app.post("/:username/edit/:poll_id", function(req, res) {
 })
 
 // delete a poll
-app.get("/:username/delete/:poll_id", function(req, res) {
+app.get("/user/:username/delete/:poll_id", function(req, res) {
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
@@ -236,7 +236,7 @@ app.get("/:username/delete/:poll_id", function(req, res) {
 })
 
 // share a poll
-app.get("/:username/share/:poll_id", function(req, res) {
+app.get("/user/:username/share/:poll_id", function(req, res) {
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
@@ -253,7 +253,7 @@ app.get("/:username/share/:poll_id", function(req, res) {
 })
 
 // UNshare a poll
-app.get("/:username/unshare/:poll_id", function(req, res) {
+app.get("/user/:username/unshare/:poll_id", function(req, res) {
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
@@ -270,7 +270,7 @@ app.get("/:username/unshare/:poll_id", function(req, res) {
 })
 
 // in profile results
-app.get("/:username/results/:poll_id", function(req, res) {
+app.get("/user/:username/results/:poll_id", function(req, res) {
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
