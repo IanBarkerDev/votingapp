@@ -2,6 +2,7 @@ head
    title Voting App
    
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+   link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
    link(type="css/text", rel="stylesheet", href="/css/index.css")
 
   
@@ -18,15 +19,21 @@ body
          div.features
             div.feature-block
                div.feature
-                  p Easy to make polls and edit them instantly.
+                  p Make polls quickly and easily with the ability to change them later.
+            div.arrow
+               i.fa.fa-arrow-right
             div.feature-block
                div.feature
-                  p Share them with anyone with the click of a button whether they're registered or not.
+                  p Share polls with the click of a button whether to let anyone vote on them.
+            div.arrow
+               i.fa.fa-arrow-right
             div.feature-block
                div.feature
-                  p View results in multiple ways.
+                  p View results in multiple ways for every individual poll.
          div.links
-            p Ready To Get Started?
-            a.button.button-right-rounded#signupLinks(href="/signup.html") Sign Up Now!
-            p Already have an account?
-            a.button.button-right-rounded#loginLinks(href="/login.html") Log In Here!
+            div.links-div
+               p Ready To Get Started?
+               a.button.button-right-rounded#signupLinks(href="/signup.html") Sign Up Now!
+            div.links-div
+               p Already have an account?
+               a.button.button-right-rounded#loginLinks(href="/login.html") Log In Here!

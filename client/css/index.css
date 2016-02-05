@@ -5,23 +5,22 @@
 */
 
 body {
-    background-color: #add8e6;
-    color: #ffffff;
+    background-color: #FFD1AA;
+    color: #4F628E;
 }
 
 .container-auto {
     margin: 0 auto;
 }
 
-#top {
-    height: 40vh;
-}
+
 
 h1 {
     margin-top: 100px;
     margin-bottom: 50px;
     font-weight: bold;
     text-align: center;
+    font-size: 60px;
 }
 
 /* navigation-bar */
@@ -34,8 +33,9 @@ h1 {
 }
 
 .navigation-bar-button {
-    color: #0645ad;
+    color: #4F628E;
     margin: 0 5px;
+    font-size: 16px;
 }
 
 .navigation-bar-button:hover {
@@ -49,7 +49,7 @@ h1 {
 }
 
 #featuresLinks {
-    background-color: #435187;  
+    background-color: inherit;  
     padding-bottom: 20px;
 }
 
@@ -57,24 +57,41 @@ h1 {
 .features {
     margin: 10px auto;
     
+}
+
+
+
+.feature-block {
+    width: 30%;
+    display: inline-block;
+}
+
+.features .arrow {
+    width: 5%;
+    display: inline-block;
+    font-size: 60px;
+    position: relative;
+    height: 250px;
 
 }
 
-.feature-block {
-    width: 33%;
-    display: inline-block;
+.arrow i {
+    position: absolute;
+    top: 85px;
+    
 }
 
 .feature {
     color: #ffffff;
-    background-color: #4e556a;
+    background-color: #D49A6A;
     
-    border: 2px inset #323644;
+    border: 2px solid #552700;
     border-radius: 5px;
     
-    font-size: 14px;
-    width: 150px;
-    height: 150px;
+    font-size: 20px;
+    width: 250px;
+    height: 250px;
+    font-weight: 600;
     
     margin: 10px auto;
     
@@ -95,9 +112,14 @@ h1 {
     text-align: center;
 }
 
+.links-div {
+    display: inline-block;
+}
+
 .links p {
-    font-size: 17px;
+    font-size: 25px;
     margin: 15px;
+    color: #4F628E;
 }
 
 .links .button {
@@ -105,7 +127,7 @@ h1 {
     text-decoration: none;
     padding: 12px 5px;
     margin: 3px 0;
-    font-size: 17px;
+    font-size: 35px;
 }
 
 .button-right-rounded {
@@ -113,17 +135,17 @@ h1 {
 }
 
 #signupLinks {
-    background-color: #aff189;
+    background-color: #116611;
 }
 
-#signupLinks:hover {
-    background-color: #709a58;
+#signupLinks:hover, #signupLinks:active, #signupLinks:active:hover {
+    background-color: #55AA55;
 }
 
 #loginLinks {
-    background-color: #f4b448;
+    background-color: #580101;
 }
 
-#loginLinks:hover {
-    background-color: #c3903a;
+#loginLinks:hover, #loginLinks:active, #loginLinks:active:hover {
+    background-color: #AA3939;
 }
