@@ -1,0 +1,224 @@
+$btnBackground: #B4DEB9;
+$btnBackgroundHover: #84C58C;
+$btnBorder: #2E8639;
+
+body {
+    background-color: #FFD2AA;
+    font-size: 24px;
+    .header {
+        text-align: center;
+        margin: 10px auto 100px auto;
+        h1, .header-buttons {
+            display: inline-block;
+            margin: 1rem auto;
+            vertical-align: middle;
+        }
+        
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        .header-buttons {
+            float: right;
+            font-size: 16px;
+            
+            
+            
+            .header-button {
+                line-height: 22px;
+                margin: 11px 10px;
+                background-color: $btnBackground;
+                color: #000;
+                border: 1px solid $btnBorder;
+                border-radius: 3px;
+                font-weight: bold;
+                
+                &:hover {
+                    background-color: $btnBackgroundHover;
+                }
+            }
+        }
+    }
+    
+    .body {
+        .poll-container {
+            margin: 1em auto;
+            background-color: #F5F6FA;
+            border: 1px solid #000;
+            h4 {
+                font-size: 30px;
+                background-color: #ACB5CF;
+                margin: 0;
+                padding: 10px;
+                border-bottom: 1px solid #587272;
+            }
+            
+            .polls {
+                
+                
+                .poll {
+                    padding: 5px;
+                    border-bottom: 1px solid #587272;
+                    
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    
+                    .poll-question, .poll-options {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    
+                    .poll-question {
+                        padding-left: 5px;
+                    }
+                    
+                    .poll-options {
+                        float: right;
+                        
+                        .poll-option {
+                            background-color: $btnBackground;
+                            border-radius: 3px;
+                            border: 1px solid $btnBorder;
+                            line-height: 24px;
+                            color: #000;
+                            font-weight: 300;
+                            margin: 0 3px;
+                            
+                            &:hover {
+                                background-color: $btnBackgroundHover;
+                            }
+                            
+                            &.share, &.unshare {
+                                width: 74.0625px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .all-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: rgba(0, 0, 0, .6);
+        
+        .indiv-modal {
+            display: none;
+            background-color: #526391;
+            border: 2px solid #000;
+            border-radius: 5px;
+            padding: 20px 10px;
+            
+            h3 {
+                text-align: center;
+                font-size: 40px;
+                font-weight: 700;
+                
+                margin: 0 auto 10px auto;
+                
+            }
+            
+            &.new-poll, &.edit-poll {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                
+                form {
+                    padding: 10px;
+                    
+                    .label-input {
+                        display: block;
+                        height: 50px;
+                       
+                       .form-label, .form-input {
+                           vertical-align: middle;
+                       }
+                        
+                        .form-label {
+                            float: left;
+                            margin-right: 10px;
+                        }
+                        
+                        .form-input {
+                            float: right;
+                            width: 250px;
+                            color: #000;
+                        }
+                    }
+                    
+                    .form-button {
+                        background-color: $btnBackground;
+                        color: #000;
+                        border: 1px solid $btnBorder;
+                        width: 140.25px;
+                        &:hover {
+                            background-color: $btnBackgroundHover;
+                        }
+                    }
+                    
+                    .choice-appended {
+                        display: block;
+                        margin: 4px auto;
+                        background-color: #FFE5CE;
+                        color: #000;
+                        border: 1px solid #AD713C;
+                        min-width: 121px;
+                        max-width: 360px;
+                        text-align: center;
+                        
+                        &:hover {
+                            background-color: #FFD2AA;
+                        }
+                    }
+                    
+                    #edit-poll-add-choice, #new-poll-add-choice {
+                        display: block;
+                        margin: 2px auto;
+                    }
+                    
+                    #new-poll-submit, #edit-poll-submit {
+                        position: absolute;
+                        bottom: 3px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+            
+            &.view-results {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 600px;
+                color: #fff;
+                height: auto;
+                
+                h3 {
+                    padding-bottom: 20px;
+                }
+                
+                .results-list-form {
+                    width: 50%;
+                    float: left;
+                    padding-left: 50px;
+                }
+                
+                .results-chart-form {
+                    width: 50%;
+                    float: right;
+                }
+            }
+        }
+    }
+}

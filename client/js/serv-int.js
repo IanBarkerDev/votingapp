@@ -15,8 +15,8 @@ function newPoll(username) {
             choices: currentChoices
         },
         
-        success: function() {
-            console.log("new poll added");
+        complete: function() {
+            window.location.pathname = "/user/" + username;
         }
     })
     
@@ -35,13 +35,14 @@ function deletePoll(username, poll_id) {
         type: "get",
         
         success: function() {
-            window.location.pathname = "/" + username;
+            window.location.pathname = "/user/" + username;
         }
     })
 }
 
 // takes a poll_id and gets the information on it to populate the edit poll form
 function editPollFormPopulate(poll_id) {
+    console.log("client1");
     $.ajax({
         url: "/poll/" + poll_id + "/info",
         type: "get",
@@ -78,8 +79,9 @@ function editPoll(username, poll_id) {
             isVisible: false
         },
         
-        success: function(data) {
-            window.location.pathname = "/" + username;
+        complete: function() {
+             console.log("got here");
+            window.location.pathname = "/user/" + username;
         }
     })
 }
@@ -94,7 +96,7 @@ function sharePoll(username, poll_id) {
         type: "get",
         
         success: function() {
-            window.location.pathname = "/" + username;
+            window.location.pathname = "/user/" + username;
         }
     })
 }
@@ -105,7 +107,7 @@ function hidePoll(username, poll_id) {
         type: "get",
         
         success: function() {
-            window.location.pathname = "/" + username;
+            window.location.pathname = "/user/" + username;
         }
     })
 }
@@ -131,7 +133,6 @@ function getResults(poll_id) {
         success: function(data) {
             var totalVotes = data.totalVotes;
             var choices = data.choices;
-            
             displayResults(totalVotes, choices);
         }
     })
@@ -161,10 +162,18 @@ function googlePieChart(choices) {
         var options = {
             backgroundColor: "none",
             chartArea: {
-                top: "10%",
-                right: "10%",
-                bottom: "10%",
-                left: "10%"
+                top: "5%",
+                right: "5%",
+                bottom: "5%",
+                left: "5%"
+            },
+            legend: {
+                position: "right",
+                alignment: "center",
+                textStyle: {
+                    fontSize: 20,
+                    color: "#ffffff"
+                }
             }
         };
         

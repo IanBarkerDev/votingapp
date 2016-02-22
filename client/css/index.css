@@ -66,6 +66,10 @@ h1 {
     display: inline-block;
 }
 
+.feature-block, .arrow i {
+    vertical-align: middle;
+}
+
 .features .arrow {
     width: 5%;
     display: inline-block;
@@ -75,11 +79,6 @@ h1 {
 
 }
 
-.arrow i {
-    position: absolute;
-    top: 85px;
-    
-}
 
 .feature {
     color: #ffffff;

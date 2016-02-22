@@ -164,6 +164,7 @@ app.post("/user/:username/add", function(req, res) {
       }
   }, function(err, doc) {
       if(err) throw err;
+      res.end();
   })
   
   
@@ -171,6 +172,7 @@ app.post("/user/:username/add", function(req, res) {
 
 // get information on a poll
 app.get("/poll/:poll_id/info", function(req, res) {
+  console.log("server1");
   var poll_id = req.params.poll_id;
   
   Poll.findOne({
@@ -183,6 +185,7 @@ app.get("/poll/:poll_id/info", function(req, res) {
 
 // update an existing poll
 app.post("/user/:username/edit/:poll_id", function(req, res) {
+ 
   var username = req.params.username;
   var poll_id = req.params.poll_id;
   
@@ -208,7 +211,7 @@ app.post("/user/:username/edit/:poll_id", function(req, res) {
       }
   }, function(err, doc) {
     if(err) throw err;
-    res.redirect("/" + username);
+    res.end();
   })
 })
 

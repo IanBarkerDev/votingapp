@@ -40,7 +40,9 @@ body
          div.container
             div.top-nav
                h1 #{question}
-               h4 by #{username}
+               h4
+                  span by 
+                  a(href="/user/" + username) #{username}
                div.top-nav-buttons
                   if(logged)
                      button.top-nav-button#logout Log Out

@@ -3,34 +3,110 @@ head
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
    link(rel="stylesheet", href="/css/profile.css")
-   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
-   script(type="text/javascript", src="https://www.google.com/jsapi")
-   script(type="text/javascript").
-      google.load('visualization', '1.0', {'packages':['corechart']});
-   script(src="/js/serv-int.js")
    
-   script.
+body
+   div.container-fluid
+      div.container
+         div.header
+            h1 #{username}'s Profile
+            div.header-buttons
+               button.header-button#new-poll(type="button") New Poll
+               if(logged)
+                  button.header-button#logout(type="button") Log Out
+        
+         div.body
+            div.poll-container
+               h4 Polls
+               div.polls
+                  if(isVisible)
+                     each val, index in polls
+                        div.poll(id=val.poll_id)
+                           a.poll-question(href="/poll/" + val.poll_id)= val.question
+                           div.poll-options
+                              button.poll-option.edit(type="button") Edit
+                              button.poll-option.share(type="button") Share
+                              button.poll-option.unshare(type="button") Hide
+                              button.poll-option.results(type="button") Results
+                              button.poll-option.delete(type="button") Delete
+                  else
+                     h5 Profile is Hidden
+                     p
+                        | If this is your profile, 
+                        a(href="/login.html") log in 
+                        | to view it.
+   div.all-modal
+      div.indiv-modal.new-poll
+         h3 New Poll
+         form
+            div.label-input
+               label.form-label(for="new-poll-question") Question
+               input.form-input#new-poll-question(type="text")
+            div.label-input
+               label.form-label(for="new-poll-choices") Choice
+               input.form-input#new-poll-choices(type="text")
+            button.form-button#new-poll-add-choice(type="button") Add Choice
+            div.new-poll-choices-append
+            button.form-button#new-poll-submit(type="button") Add Poll
+         
+      div.indiv-modal.edit-poll
+         h3 Edit Poll
+         form
+            div.label-input
+               label.form-label(for="edit-poll-question") Question
+               input.form-input#edit-poll-question(type="text")
+            div.label-input
+               label.form-label(for="edit-poll-choices") Choice
+               input.form-input#edit-poll-choices(type="text")
+            button.form-button#edit-poll-add-choice(type="button") Add Choice
+            div.edit-poll-choices-append
+            button.form-button#edit-poll-submit(type="button") Edit Poll
+         
+      div.indiv-modal.view-results
+         h3 Results
+         div.results-list-form
+         div.results-chart-form#chart                 
+            
+            
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+script(type="text/javascript", src="https://www.google.com/jsapi")
+script(type="text/javascript").
+   google.load('visualization', '1.0', {'packages':['corechart']});
+script(src="/js/serv-int.js")
+   
+script(tyoe="text/javascript").
+
       $(document).ready(function() {
+         
+         var polls = !{JSON.stringify(polls)};
+         for(var i in polls) {
+            if(polls[i].isVisible) {
+               $("#" + polls[i].poll_id + " .share").css("display", "none");
+            } else {
+               $("#" + polls[i].poll_id + " .unshare").css("display", "none");
+            }
+         }
+      
+      
          // closing modals unless clicking on the modal
          $(".indiv-modal").on("click", function(e) {
             e.stopPropagation();
          })
          
-         $(".modal-div").on("click", function() {
-            $(".modal-div").css("display", "none");
+         $(".all-modal").on("click", function() {
+            $(".all-modal").css("display", "none");
             $(".indiv-modal").css("display", "none");
          })
          
          
          // loading up add poll modal
-         $("#add-poll").on("click", function() {
-            $(".modal-div").css("display", "block");
+         $("#new-poll").on("click", function() {
+            $(".all-modal").css("display", "block");
             $(".new-poll").css("display", "block");
          })
       
          $("#new-poll-add-choice").on("click", function() {
             // adds choice to array
-            var choice = $("#new-poll-choice").val();
+            var choice = $("#new-poll-choices").val();
             currentChoices.push({name: choice, votes: 0});
             
             // appends choice as an element to new-poll-choices-append div
@@ -52,7 +128,7 @@ head
          $("#edit-poll-add-choice").on("click", function() {
    
             // adds choice to array
-            var choice = $("#edit-poll-choice").val();
+            var choice = $("#edit-poll-choices").val();
             currentChoices.push({name: choice, votes: 0});
             
             // appends choice as an element to new-poll-choices-append div
@@ -88,33 +164,39 @@ head
          })
          
          // delete a poll
-         $(".delete").on("click", function() {
-            var poll_id = $(this).parent().attr("id");
+         $(".delete").on("click", function(e) {
+            e.stopPropagation();
+            var poll_id = $(this).parent().parent().attr("id");
             deletePoll(!{JSON.stringify(username)}, poll_id);
          })
          
-         $(".edit").on("click", function() {
-            var poll_id = $(this).parent().attr("id");
+         $(".edit").on("click", function(e) {
+            e.stopPropagation();
+            var poll_id = $(this).parent().parent().attr("id");
             editPollFormPopulate(poll_id);
-            $(".modal-div").css("display", "block");
+            $(".all-modal").css("display", "block");
             $(".edit-poll").css("display", "block");
          })
          
-         $(".share").on("click", function() {
-            var poll_id = $(this).parent().attr("id");
+         $(".share").on("click", function(e) {
+            e.stopPropagation();
+            var poll_id = $(this).parent().parent().attr("id");
+            console.log("share: " + poll_id);
             sharePoll(!{JSON.stringify(username)}, poll_id);
          })
          
-         $(".unshare").on("click", function() {
-            var poll_id = $(this).parent().attr("id");
+         $(".unshare").on("click", function(e) {
+            e.stopPropagation();
+            var poll_id = $(this).parent().parent().attr("id");
             hidePoll(!{JSON.stringify(username)}, poll_id);
          })
          
-         $(".results").on("click", function() {
-            var poll_id = $(this).parent().attr("id");
+         $(".results").on("click", function(e) {
+            e.stopPropagation();
+            var poll_id = $(this).parent().parent().attr("id");
             getResults(poll_id);
             
-            $(".modal-div").css("display", "block");
+            $(".all-modal").css("display", "block");
             $(".view-results").css("display", "block");
          })
          
@@ -122,75 +204,3 @@ head
             userLogout();
          })
       })
-
-body
-   div.container-fluid#header
-      div.container
-         div.header
-            h1 #{username}'s Profile
-            div.header-buttons
-               button.header-button#add-poll Create A New Poll
-               if(logged)
-                  span |
-                  button.header-button#logout(type="button") Log Out
-   
-   
-   div.container-fluid#polls
-      div.container
-         if(isVisible)
-            each val, index in polls
-               div.poll(id=val.poll_id)
-                  p.question= val.question
-                  button.poll-option.delete(type="button")
-                     i.fa.fa-minus
-                  button.poll-option.edit(type="button")
-                     i.fa.fa-gear
-                  if(val.isVisible)
-                     button.poll-option.unshare(type="button")
-                        i.fa.fa-ban.unshare-icon
-                  else
-                     button.poll-option.share(type="button")
-                        i.fa.fa-share.share-icon
-                  button.poll-option.results(type="button")
-                     i.fa.fa-bar-chart
-   
-   div.container-fluid#modals
-      div.modal-div
-         div.container
-            div.new-poll.indiv-modal
-               form
-                  label.form-label(for="new-poll-question") Question:
-                  br
-                  input.form-input#new-poll-question(type="text")
-                  br
-                  label.form-label(for="new-poll-choices") Choices:
-                  br
-                  input.form-input#new-poll-choice(type="text")
-                  br
-                  button.form-button#new-poll-add-choice(type="button") Add Choice
-                  br
-            
-                  div.new-poll-choices-append
-                  br
-            
-                  button.form-button#new-poll-submit(type="button") Add Poll
-               
-         div.edit-poll.indiv-modal
-            form.form-group(data-poll_id="")
-               label.form-label(for="edit-poll-question") Question:
-               input.form-input#edit-poll-question(type="text")
-               br
-               label.form-label(for="edit-poll-choices") Choices:
-               input.form-input#edit-poll-choice(type="text")
-               br
-               button.form-button#edit-poll-add-choice(type="button") Add Choice
-            
-               div.edit-poll-choices-append
-               br
-            
-               button.form-button#edit-poll-submit(type="button") Edit Poll
-               
-         div.view-results.indiv-modal
-            h3 Results
-            div.results-list-form
-            div.results-chart-form#chart                                  
