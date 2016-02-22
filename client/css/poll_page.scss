@@ -1,3 +1,152 @@
+$btnBackground: #B4DEB9;
+$btnBackgroundHover: #84C58C;
+$btnBorder: #2E8639;
+
 body {
+    background-color: #FFD2AA;
+    font-size: 24px;
     
+    .header-button, .choice-vote {
+        margin-left: 10px;
+        margin-right: 10px;
+        background-color: $btnBackground;
+        color: #000;
+        border: 1px solid $btnBorder;
+        border-radius: 3px;
+        font-weight: bold;
+        height: 41px;
+        
+        &:hover {
+            background-color: $btnBackgroundHover;
+            text-decoration: none;
+        }
+    }
+    
+    .header {
+        text-align: center;
+        margin: 10px auto 100px auto;
+        
+        .title, .header-buttons {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 20px auto;
+        }
+        
+        .title {
+            
+            h1 {
+                font-size: 40px;
+                font-weight: bold;
+                font-style: italic;
+            }
+            
+            h4 {
+                a {
+                    font-style: italic;
+                    font-size: 16px;
+                }
+            }
+        }
+        
+        .header-buttons {
+            float: right;
+            margin: 43px auto;
+        }
+    }
+    
+    .body {
+        .poll {
+            margin: 1em auto;
+            background-color: #F5F6FA;
+            border: 1px solid #000;
+            border-radius: 5px;
+            .question {
+                font-size: 30px;
+                background-color: #ACB5CF;
+                margin: 0;
+                padding: 10px;
+                border-bottom: 1px solid #587272;
+                border-radius: 5px 5px 0 0;
+                font-weight: 500;
+            }
+            
+            .poll-choices {
+                .poll-choice {
+                    padding: 5px 5px 4px 5px;
+                    border-bottom: 1px solid #587272;
+                    
+                    .choice-name, .choice-vote {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    
+                    .choice-name {
+                        padding-left: 5px;
+                    }
+                    
+                    .choice-vote {
+                        float: right;
+                        font-weight: 300;
+                    }
+                }
+                
+                .new-choice-add {
+                    padding: 5px 5px 4px 5px;
+                    border-bottom: 1px solid #587272;
+                    
+                    p, #choice-add, .form-label, .form-input, .form-button {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    
+                    p, .form-label {
+                        padding-left: 5px;
+                    }
+                    
+                    #choice-add, .form-button {
+                        float: right;
+                        font-weight: 300;
+                    }
+                    
+                    #choice-add-form {
+                        margin-bottom: 5px;
+                        display: none;
+                        border: none;
+                        .label-input {
+                            .form-label {
+                                font-weight: 400;
+                                margin-right: 10px;
+                            }
+                        
+                            .form-button {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            #see-results-div {
+                text-align: center;
+                #see-results {
+                    margin: 5px;
+                }
+                
+            }
+            
+            .results {
+                overflow-y: auto;
+                .results-list-form {
+                    width: 50%;
+                    float: left;
+                    padding-left: 50px;
+                }
+                
+                .results-chart-form {
+                    width: 50%;
+                    float: right;
+                }
+            }
+        }
+    }
 }

@@ -28,15 +28,17 @@ body {
   body .body .poll-container {
     margin: 1em auto;
     background-color: #F5F6FA;
-    border: 1px solid #000; }
+    border: 1px solid #000;
+    border-radius: 5px; }
     body .body .poll-container h4 {
       font-size: 30px;
       background-color: #ACB5CF;
       margin: 0;
       padding: 10px;
-      border-bottom: 1px solid #587272; }
+      border-bottom: 1px solid #587272;
+      border-radius: 5px 5px 0 0; }
     body .body .poll-container .polls .poll {
-      padding: 5px;
+      padding: 5px 5px 4px 5px;
       border-bottom: 1px solid #587272; }
       body .body .poll-container .polls .poll:last-child {
         border-bottom: none; }

@@ -2,6 +2,53 @@ head
    title Poll
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
    link(rel="stylesheet", href="/css/poll_page.css")
+
+   
+body
+   if(isVisible || (logged === username))
+      div.container-fluid
+         div.container
+            div.header
+               div.title
+                  h1 #{question}
+                  h4
+                     span by 
+                     a(href="/user/" + username) #{username}
+               div.header-buttons
+                  if(logged)
+                     button.header-button(type="button")#profile My Profile
+                     button.header-button(type="button")#logout Log Out
+                  else
+                     a.header-button(href="/login.html") Log In
+                     a.header-button(href="/signup.html") Sign Up
+            div.body
+               div.poll
+                  p.question #{question}
+                  div.poll-choices
+                     each val, index in choices
+                        div.poll-choice(id=val.name)
+                           p.choice-name= val.name
+                           button.choice-vote(type="button") Vote
+                     if(logged && (logged !== username))
+                        div.new-choice-add
+                           p Current options not feeling right to you?
+                           button.header-button#choice-add(type="button") Create New Choice
+                           form#choice-add-form
+                              div.label-input
+                                 label.form-label(for="choice-add-input") Choice
+                                 input.form-input#choice-add-input(type="text")
+                                 button.form-button.header-button#choice-add-button(type="button") Add New Choice
+                  div#see-results-div
+                     button.header-button#see-results(type="button") View Results
+                  div.results
+                     div.results-list-form
+                     div.results-chart-form#chart
+   else if(!isVisible && (logged === username))
+      h4 Poll not visible to other users. Share on your profile page.
+   else
+      h4 Poll is unable to be viewed at this time.
+      
+      
    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
    script(type="text/javascript", src="https://www.google.com/jsapi")
    script(type="text/javascript").
@@ -16,13 +63,13 @@ head
          })
          
          $("#see-results").on("click", function() {
-            $(".new-choice-add").slideToggle();
+            $(".new-choice-add").slideUp();
             $(".choice-vote").css("display", "none");
             getResults(!{JSON.stringify(poll_id)});
          })
          
          $("#choice-add").on("click", function() {
-            $("#choice-add-form").slideToggle();
+            $("#choice-add-form").slideDown();
          })
          
          $("#choice-add-button").on("click", function() {
@@ -32,52 +79,8 @@ head
          $("#logout").on("click", function() {
             userLogout();
          })
-      })
-   
-body
-   if(isVisible || (logged === username))
-      div.container-fluid#top
-         div.container
-            div.top-nav
-               h1 #{question}
-               h4
-                  span by 
-                  a(href="/user/" + username) #{username}
-               div.top-nav-buttons
-                  if(logged)
-                     button.top-nav-button#logout Log Out
-                  else
-                     a.top-nav-button(href="/login.html") Log In
-                     span.line-inbetween-login-signup |
-                     a.top-nav-button(href="/signup.html") Sign Up
-      div.container-fluid#bottom
-         div.container
-            div#poll
-               div#poll-choices
-                  p.question #{question}
-                  each val, index in choices
-                     div.choice(id=val.name)
-                        p.choice-name= val.name
-                           button.choice-vote Vote
-                  
-                  // if logged in user doesn't equal owner of poll
          
-               if(logged && (logged !== username))
-                  div.new-choice-add
-                     p Don't see anything you like?
-                     button#choice-add Add New Choice
-                     form#choice-add-form
-                        label.form-label(for="choice-add-input") Choice:
-                        br
-                        input.form-input#choice-add-input(type="text")
-                        br
-                        button.form-button#choice-add-button(type="button") Add
-               div.results-button
-                  button#see-results(type="button") View Results
-               div.results
-                  div.results-list-form
-                  div.results-chart-form#chart
-   else if(!isVisible && (logged === username))
-         h4 Poll not visible to other users. Share on your profile page.       
-   else
-      h4 Poll is unable to be viewed at this time.
+         $("#profile").on("click", function() {
+            goToProfile();
+         })
+      })

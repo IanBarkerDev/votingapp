@@ -172,7 +172,7 @@ function googlePieChart(choices) {
                 alignment: "center",
                 textStyle: {
                     fontSize: 20,
-                    color: "#ffffff"
+                    color: "#000"
                 }
             }
         };
@@ -192,10 +192,7 @@ function addAuthChoice(str, poll_id) {
         },
         
         success: function() {
-            // add new choice to list on page (already added in database)
-            var html = '<div class="choice" id="' + str + '"><p>' + str + '<button class="choice-vote">Vote</button></p></div>';
-            $("#poll-choices").append(html);
-            
+            $(".new-choice-add").slideUp();
             // hide all the vote options
             $(".choice-vote").css("display", "none");
             
@@ -208,4 +205,19 @@ function addAuthChoice(str, poll_id) {
 function userLogout() {
     document.cookie = "logged=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     window.location.pathname = "/";
+}
+
+function goToProfile() {
+    var logged = parseCookies("logged");
+    window.location.pathname = "/user/" + logged;
+}
+
+function parseCookies(str) {
+    var arr = document.cookie.split(";");
+    for(var i in arr) {
+        var arr2 = arr[i].split("=");
+        if(arr2[0] === str) {
+            return arr2[1];
+        }
+    }
 }
