@@ -20,8 +20,8 @@ body
                div.polls
                   if(isVisible)
                      each val, index in polls
-                        div.poll(id=val.poll_id)
-                           a.poll-question(href="/poll/" + val.poll_id)= val.question
+                        div.poll(id=val._id)
+                           a.poll-question(href="/poll/" + val._id)= val.question
                            div.poll-options
                               button.poll-option.edit(type="button") Edit
                               button.poll-option.share(type="button") Share
@@ -78,11 +78,11 @@ script(tyoe="text/javascript").
       $(document).ready(function() {
          
          var polls = !{JSON.stringify(polls)};
-         for(var i in polls) {
+         for(var i = 0; i < polls.length; i ++) {
             if(polls[i].isVisible) {
-               $("#" + polls[i].poll_id + " .share").css("display", "none");
+               $("#" + polls[i]._id + " .share").css("display", "none");
             } else {
-               $("#" + polls[i].poll_id + " .unshare").css("display", "none");
+               $("#" + polls[i]._id + " .unshare").css("display", "none");
             }
          }
       
@@ -90,19 +90,18 @@ script(tyoe="text/javascript").
          // closing modals unless clicking on the modal
          $(".indiv-modal").on("click", function(e) {
             e.stopPropagation();
-         })
+         });
          
          $(".all-modal").on("click", function() {
             $(".all-modal").css("display", "none");
             $(".indiv-modal").css("display", "none");
-         })
-         
-         
+         });
+
          // loading up add poll modal
          $("#new-poll").on("click", function() {
             $(".all-modal").css("display", "block");
             $(".new-poll").css("display", "block");
-         })
+         });
       
          $("#new-poll-add-choice").on("click", function() {
             // adds choice to array
@@ -113,7 +112,7 @@ script(tyoe="text/javascript").
             var html = '<button class="choice-appended" data-choice-number="' + choiceNumber + '">' + choice + '</button>';
             choiceNumber++;
             $(".new-poll-choices-append").append(html);
-         })
+         });
          
          // clicking on a choice in the add div to delete it
          $(".new-poll-choices-append").on("click", ".choice-appended", function() {
@@ -123,7 +122,7 @@ script(tyoe="text/javascript").
             
             // removes from html
             $(".new-poll-choices-append").children(".choice-appended[data-choice-number='" + index + "']").remove();
-         })
+         });
          
          $("#edit-poll-add-choice").on("click", function() {
    
@@ -135,7 +134,7 @@ script(tyoe="text/javascript").
             var html = '<button class="choice-appended" data-choice-number="' + choiceNumber + '">' + choice + '</button>';
             choiceNumber++;
             $(".edit-poll-choices-append").append(html);
-         })
+         });
          
          // clicking on a choice in the edit div to delete it
          $(".edit-poll-choices-append").on("click", ".choice-appended", function() {
@@ -145,30 +144,30 @@ script(tyoe="text/javascript").
             
             // removes from html
             $(".edit-poll-choices-append").children(".choice-appended[data-choice-number='" + index + "']").remove();
-         })
+         });
          
          // click on add poll sends ajax call to server
          $("#new-poll-submit").on("click", function() {
             newPoll(!{JSON.stringify(username)});
-         })
+         });
          
          // click on edit poll sends ajax call to server
          $("#edit-poll-submit").on("click", function() {
             var poll_id = $(this).parent().attr("data-poll_id");
             editPoll(!{JSON.stringify(username)}, poll_id);
-         })
-         
+         });
+
          // click on a poll and go to the poll page
          $(".poll").on("click", function() {
             window.location.pathname = "/poll/" + $(this).attr("id");
-         })
+         });
          
          // delete a poll
          $(".delete").on("click", function(e) {
             e.stopPropagation();
             var poll_id = $(this).parent().parent().attr("id");
             deletePoll(!{JSON.stringify(username)}, poll_id);
-         })
+         });
          
          $(".edit").on("click", function(e) {
             e.stopPropagation();
@@ -176,20 +175,20 @@ script(tyoe="text/javascript").
             editPollFormPopulate(poll_id);
             $(".all-modal").css("display", "block");
             $(".edit-poll").css("display", "block");
-         })
+         });
          
          $(".share").on("click", function(e) {
             e.stopPropagation();
             var poll_id = $(this).parent().parent().attr("id");
             console.log("share: " + poll_id);
             sharePoll(!{JSON.stringify(username)}, poll_id);
-         })
+         });
          
          $(".unshare").on("click", function(e) {
             e.stopPropagation();
             var poll_id = $(this).parent().parent().attr("id");
             hidePoll(!{JSON.stringify(username)}, poll_id);
-         })
+         });
          
          $(".results").on("click", function(e) {
             e.stopPropagation();
@@ -198,9 +197,9 @@ script(tyoe="text/javascript").
             
             $(".all-modal").css("display", "block");
             $(".view-results").css("display", "block");
-         })
+         });
          
          $("#logout").on("click", function() {
             userLogout();
-         })
-      })
+         });
+      });

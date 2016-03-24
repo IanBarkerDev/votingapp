@@ -95,7 +95,7 @@ app.get("/user/:username", function(req, res) {
   }, function(err, doc) {
       if(err) throw err;
       Poll.find({
-        poll_id: {
+        _id: {
           $in: doc.polls
         }
       }, function(err, polls) {
@@ -111,15 +111,15 @@ app.get("/user/:username", function(req, res) {
 });
 
 // poll page (unique poll_id)
-app.get("/poll/:poll_id", function(req, res) {
-  var poll_id = req.params.poll_id;
+app.get("/poll/:_id", function(req, res) {
+  var _id = req.params._id;
   
   Poll.findOne({
-      poll_id: poll_id
+      _id: _id
   }, function(err, doc) {
       if(err) throw err;
       res.render("poll_page", {
-          poll_id: doc.poll_id,
+          _id: doc._id.toString(),
           username: doc.username,
           question: doc.question,
           choices: doc.choices,
@@ -137,8 +137,7 @@ app.get("/poll/:poll_id", function(req, res) {
 */
 app.post("/user/:username/add", function(req, res) {
   var username = req.params.username;
-  
-  var poll_id = Math.floor(Math.random() * 1000);
+
   var question = req.body.question;
   var choices = req.body.choices;
   
@@ -146,37 +145,34 @@ app.post("/user/:username/add", function(req, res) {
   var isVisible = false;
   
   var poll = new Poll({
-      poll_id: poll_id,
       username: username,
       question: question,
       choices: choices,
       totalVotes: totalVotes,
       isVisible: isVisible
   });
-  
-  poll.save();
-  
-  User.update({
-      username: username
-  }, {
-      $push: {
-          polls: poll.poll_id
-      }
-  }, function(err, doc) {
-      if(err) throw err;
-      res.end();
-  })
-  
-  
+
+  poll.save(function(err,p) {
+      User.update({
+          username: username
+      }, {
+          $push: {
+              polls: p._id
+          }
+      }, function(err, doc) {
+          if(err) throw err;
+          res.end();
+      })
+  });
 });
 
 // get information on a poll
-app.get("/poll/:poll_id/info", function(req, res) {
+app.get("/poll/:_id/info", function(req, res) {
   console.log("server1");
-  var poll_id = req.params.poll_id;
+  var _id = req.params._id;
   
   Poll.findOne({
-    poll_id: poll_id
+    _id: _id
   }, function(err, doc) {
       if(err) throw err;
       res.json(doc);
@@ -184,10 +180,10 @@ app.get("/poll/:poll_id/info", function(req, res) {
 });
 
 // update an existing poll
-app.post("/user/:username/edit/:poll_id", function(req, res) {
+app.post("/user/:username/edit/:_id", function(req, res) {
  
   var username = req.params.username;
-  var poll_id = req.params.poll_id;
+  var _id = req.params._id;
   
   var question = req.body.question;
   var choices = req.body.choices;
@@ -197,11 +193,11 @@ app.post("/user/:username/edit/:poll_id", function(req, res) {
     choices[i].votes = 0;
   }
   
-  var totalVotes = 0
+  var totalVotes = 0;
   var isVisible = req.body.isVisible;
   
   Poll.update({
-      poll_id: poll_id
+      _id: _id
   }, {
       $set: {
         question: question,
@@ -216,12 +212,12 @@ app.post("/user/:username/edit/:poll_id", function(req, res) {
 });
 
 // delete a poll
-app.get("/user/:username/delete/:poll_id", function(req, res) {
+app.get("/user/:username/delete/:_id", function(req, res) {
   var username = req.params.username;
-  var poll_id = req.params.poll_id;
+  var _id = req.params._id;
   
   Poll.remove({
-    poll_id: poll_id
+    _id: _id
   }, function(err, doc) {
     if(err) throw err;
   });
@@ -230,7 +226,7 @@ app.get("/user/:username/delete/:poll_id", function(req, res) {
     username: username
   }, {
     $pull: {
-      polls: poll_id
+      polls: _id
     }
   }, function(err, doc) {
     if(err) throw err;
@@ -239,12 +235,11 @@ app.get("/user/:username/delete/:poll_id", function(req, res) {
 });
 
 // share a poll
-app.get("/user/:username/share/:poll_id", function(req, res) {
+app.get("/user/:username/share/:id", function(req, res) {
   var username = req.params.username;
-  var poll_id = req.params.poll_id;
-  
+  var id = req.params.id;
   Poll.update({
-    poll_id: poll_id
+    _id: id
   }, {
     $set: {
       isVisible: true
@@ -256,12 +251,12 @@ app.get("/user/:username/share/:poll_id", function(req, res) {
 });
 
 // UNshare a poll
-app.get("/user/:username/unshare/:poll_id", function(req, res) {
+app.get("/user/:username/unshare/:id", function(req, res) {
   var username = req.params.username;
-  var poll_id = req.params.poll_id;
+  var id = req.params.id;
   
   Poll.update({
-    poll_id: poll_id
+    _id: id
   }, {
     $set: {
       isVisible: false
@@ -273,12 +268,12 @@ app.get("/user/:username/unshare/:poll_id", function(req, res) {
 });
 
 // in profile results
-app.get("/user/:username/results/:poll_id", function(req, res) {
+app.get("/user/:username/results/:_id", function(req, res) {
   var username = req.params.username;
-  var poll_id = req.params.poll_id;
+  var _id = req.params._id;
   
   Poll.findOne({
-    poll_id: poll_id
+    _id: _id
   }, function(err, doc) {
     if(err) throw err;
     
@@ -294,7 +289,7 @@ app.get("/poll/:poll_id/results", function(req, res) {
   var poll_id = req.params.poll_id;
   
   Poll.findOne({
-    poll_id: poll_id
+    _id: poll_id
   }, function(err, doc) {
     if(err) throw err;
     res.json({
@@ -305,19 +300,14 @@ app.get("/poll/:poll_id/results", function(req, res) {
 });
 
 // record vote in poll
-// this is an awful way of doing this
-// need to store choices also with an id instead of just doing everything by strings
-// numbers >> strings
-// it also doesn't work in multi word choices
-// TODO
 app.get("/poll/:poll_id/vote/:choice", function(req, res) {
   var poll_id = req.params.poll_id;
   
-  // choice = name
+  // choice = choice objectID
   var choice = req.params.choice;
   
   Poll.update({
-    poll_id: poll_id,
+    _id: poll_id
   }, {
     $inc: {
       totalVotes: 1
@@ -327,8 +317,8 @@ app.get("/poll/:poll_id/vote/:choice", function(req, res) {
   });
   
   Poll.update({
-    poll_id: poll_id,
-    "choices.name": choice
+    _id: poll_id,
+    "choices._id": choice
   }, {
     $inc: {
       "choices.$.votes": 1
@@ -345,11 +335,8 @@ app.post("/poll/:poll_id/new", function(req, res) {
   var name = req.body.name;
   
   // if user = logged in
-  
-
-  
   Poll.update({
-    poll_id: poll_id
+    _id: poll_id
   }, {
     $push: {
       choices: {
@@ -368,5 +355,5 @@ app.post("/poll/:poll_id/new", function(req, res) {
 
 
 app.listen(4000, process.env.IP, function() {
-    console.log("Running on port " + 4000);
+    console.log("Running on port 4000");
 });

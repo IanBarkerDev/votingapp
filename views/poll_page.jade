@@ -26,7 +26,7 @@ body
                   p.question #{question}
                   div.poll-choices
                      each val, index in choices
-                        div.poll-choice(id=val.name)
+                        div.poll-choice(id=val._id)
                            p.choice-name= val.name
                            button.choice-vote(type="button") Vote
                      if(logged && (logged !== username))
@@ -58,14 +58,14 @@ body
    script.
       $(document).ready(function() {
          $(".choice-vote").on("click", function() {
-            var name = $(this).parent().parent().attr("id");
-            voteFor(!{JSON.stringify(poll_id)}, name);
+            var choice_id = $(this).parent().attr("id");
+            voteFor(!{JSON.stringify(_id)}, choice_id);
          });
          
          $("#see-results").on("click", function() {
             $(".new-choice-add").slideUp();
             $(".choice-vote").css("display", "none");
-            getResults(!{JSON.stringify(poll_id)});
+            getResults(!{JSON.stringify(_id)});
          });
          
          $("#choice-add").on("click", function() {
@@ -73,7 +73,7 @@ body
          });
          
          $("#choice-add-button").on("click", function() {
-           addAuthChoice($("#choice-add-input").val(), !{JSON.stringify(poll_id)});
+           addAuthChoice($("#choice-add-input").val(), !{JSON.stringify(_id)});
          });
          
          $("#logout").on("click", function() {

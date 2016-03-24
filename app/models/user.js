@@ -5,9 +5,9 @@ var userSchema = Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     email: String,
-    polls: [Number],
+    polls: [Schema.Types.ObjectId],
     isVisible: Boolean
-})
+});
 
 var User = mongoose.model("User", userSchema);
 
