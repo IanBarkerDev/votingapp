@@ -1,44 +1,35 @@
-/*
-* login-signup.css
-* Ian Barker
-* used for both login.html and signup.html
-*/
-
 body {
-    background-color: #FFD1AA;
-}
-
-#login-signup {
-    margin-top: 100px;
+    background-color: #E5E5FF;
 }
 
 h1 {
-    margin: 20px;
+    margin-top: 50px;
+    font-size: 40px;
 }
 
-/* div-form */
 .div-form {
-    margin: 10px auto;
+    margin: 25px 0;
 }
 
-.form-label {
-    margin: 5px 5px 5px 0;
+.form-label, .form-input {
     display: block;
 }
 
-.form-input {
-    width: 200px;
-     display: block;
-}
-
 .form-button {
-    margin: 10px 4px 4px 0;
-    background-color: #116611;
-    color: #fff;
+    margin: 15px 0;
     border: none;
+    background-color: #fff;
+    box-shadow: 2px 2px 1px 1px #000;
 }
 
-.form-button:hover {
-    background-color: #55AA55;
-    color: #ffffff;
+.form-button:hover, .form-button:active {
+    background-color: #E5E5FF;
+}
+
+.form-button:active {
+    box-shadow: -1px -1px 1px 1px #000;
+}
+
+.switch {
+    font-size: 20px;
 }
