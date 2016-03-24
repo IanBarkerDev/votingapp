@@ -354,6 +354,6 @@ app.post("/poll/:poll_id/new", function(req, res) {
 
 
 
-app.listen(4000, process.env.IP, function() {
-    console.log("Running on port 4000");
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log("Running on port " + process.env.PORT);
 });
