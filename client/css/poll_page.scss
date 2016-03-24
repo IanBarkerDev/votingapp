@@ -3,7 +3,7 @@ $btnBackgroundHover: #84C58C;
 $btnBorder: #2E8639;
 
 body {
-    background-color: #FFD2AA;
+    background-color: #E5E5FF;
     font-size: 24px;
     
     .header-button, .choice-vote {
@@ -13,7 +13,7 @@ body {
         color: #000;
         border: 1px solid $btnBorder;
         border-radius: 3px;
-        font-weight: bold;
+        font-weight: normal;
         height: 41px;
         
         &:hover {
@@ -33,6 +33,10 @@ body {
         }
         
         .title {
+            h1, h4 {
+                display: inline-block;
+                margin-right: 5px;
+            }
             
             h1 {
                 font-size: 40px;
@@ -41,8 +45,10 @@ body {
             }
             
             h4 {
+                font-style: italic;
+
                 a {
-                    font-style: italic;
+                    font-style: normal;
                     font-size: 16px;
                 }
             }

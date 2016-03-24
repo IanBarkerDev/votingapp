@@ -60,27 +60,27 @@ body
          $(".choice-vote").on("click", function() {
             var name = $(this).parent().parent().attr("id");
             voteFor(!{JSON.stringify(poll_id)}, name);
-         })
+         });
          
          $("#see-results").on("click", function() {
             $(".new-choice-add").slideUp();
             $(".choice-vote").css("display", "none");
             getResults(!{JSON.stringify(poll_id)});
-         })
+         });
          
          $("#choice-add").on("click", function() {
             $("#choice-add-form").slideDown();
-         })
+         });
          
          $("#choice-add-button").on("click", function() {
            addAuthChoice($("#choice-add-input").val(), !{JSON.stringify(poll_id)});
-         })
+         });
          
          $("#logout").on("click", function() {
             userLogout();
-         })
+         });
          
          $("#profile").on("click", function() {
             goToProfile();
-         })
-      })
+         });
+      });

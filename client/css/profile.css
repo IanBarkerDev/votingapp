@@ -1,5 +1,5 @@
 body {
-  background-color: #FFD2AA;
+  background-color: #E5E5FF;
   font-size: 24px; }
   body .header {
     text-align: center;
@@ -73,7 +73,7 @@ body {
       display: none;
       background-color: #526391;
       border: 2px solid #000;
-      border-radius: 5px;
+      border-radius: 7px;
       padding: 20px 10px; }
       body .all-modal .indiv-modal h3 {
         text-align: center;
@@ -92,7 +92,8 @@ body {
             display: block;
             height: 50px; }
             body .all-modal .indiv-modal.new-poll form .label-input .form-label, body .all-modal .indiv-modal.new-poll form .label-input .form-input, body .all-modal .indiv-modal.edit-poll form .label-input .form-label, body .all-modal .indiv-modal.edit-poll form .label-input .form-input {
-              vertical-align: middle; }
+              vertical-align: middle;
+              display: inline-block; }
             body .all-modal .indiv-modal.new-poll form .label-input .form-label, body .all-modal .indiv-modal.edit-poll form .label-input .form-label {
               float: left;
               margin-right: 10px; }
@@ -120,10 +121,10 @@ body {
               background-color: #FFD2AA; }
           body .all-modal .indiv-modal.new-poll form #edit-poll-add-choice, body .all-modal .indiv-modal.new-poll form #new-poll-add-choice, body .all-modal .indiv-modal.edit-poll form #edit-poll-add-choice, body .all-modal .indiv-modal.edit-poll form #new-poll-add-choice {
             display: block;
-            margin: 2px auto; }
+            margin: 10px auto; }
           body .all-modal .indiv-modal.new-poll form #new-poll-submit, body .all-modal .indiv-modal.new-poll form #edit-poll-submit, body .all-modal .indiv-modal.edit-poll form #new-poll-submit, body .all-modal .indiv-modal.edit-poll form #edit-poll-submit {
             position: absolute;
-            bottom: 3px;
+            bottom: 2%;
             left: 50%;
             transform: translateX(-50%); }
       body .all-modal .indiv-modal.view-results {
