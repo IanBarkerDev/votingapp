@@ -11,29 +11,31 @@ body
       div.container
          h1 Welcome to Voting App!
          div.navigation-bar
-            a.navigation-bar-button#loginFixed(href="/login.html") Log In
-            span.divider |
-            a.navigation-bar-button#signupFixed(href="/signup.html") Sign Up
-   div.container-fluid#bottom
+            ul
+               li
+                  a.navigation-bar-button#loginFixed(href="/login.html") Log In
+               li
+                  a.navigation-bar-button#signupFixed(href="/signup.html") Sign Up
+   div.container-fluid#middle
       div.container#featuresLinks
          div.features
             div.feature-block
                div.feature
                   p Make polls quickly and easily with the ability to change them later.
-            div.arrow
-               i.fa.fa-arrow-right
+            i.fa.fa-arrow-right
             div.feature-block
                div.feature
                   p Share polls with the click of a button whether to let anyone vote on them.
-            div.arrow
-               i.fa.fa-arrow-right
+            i.fa.fa-arrow-right
             div.feature-block
                div.feature
                   p View results in multiple ways for every individual poll.
          div.links
             div.links-div
                p Ready To Get Started?
-               a.button.button-right-rounded#signupLinks(href="/signup.html") Sign Up Now!
+               a.button#signupLinks(href="/signup.html") Sign Up Now!
             div.links-div
                p Already have an account?
-               a.button.button-right-rounded#loginLinks(href="/login.html") Log In Here!
+               a.button#loginLinks(href="/login.html") Log In Here!
+      div.container#footer
+         p &copy; 2016 Ian Barker

@@ -21,7 +21,7 @@ app.set("view engine", "jade");
 
 app.get("/", function(req, res) {
   res.render("index");
-})
+});
 
 // login
 app.post("/login", function(req, res) {
@@ -48,7 +48,7 @@ app.post("/login", function(req, res) {
           res.redirect("/login.html?incorrect=" + encodeURIComponent("password"));
       }
   })
-})
+});
 
 // sign up
 app.post("/signup", function(req, res) {
@@ -69,7 +69,7 @@ app.post("/signup", function(req, res) {
       // passwords don't match
       res.redirect("/signup.html?incorrect=password");
     } //TODO: if email doesn't exist; redirect back incorrect=email
-  })
+  });
   
   // everything right; create user
   
@@ -79,12 +79,12 @@ app.post("/signup", function(req, res) {
       email: email,
       polls: [],
       isVisible: true
-  })
+  });
   
   user.save();
   res.cookie("logged", username);
   res.redirect("/user/" + username);
-})
+});
 
 // profile page (unique username)
 app.get("/user/:username", function(req, res) {
@@ -108,7 +108,7 @@ app.get("/user/:username", function(req, res) {
         })
       })
   })
-})
+});
 
 // poll page (unique poll_id)
 app.get("/poll/:poll_id", function(req, res) {
@@ -128,7 +128,7 @@ app.get("/poll/:poll_id", function(req, res) {
           logged: req.cookies.logged
       })
   })
-})
+});
 
 // add a new poll
 /* 
@@ -152,7 +152,7 @@ app.post("/user/:username/add", function(req, res) {
       choices: choices,
       totalVotes: totalVotes,
       isVisible: isVisible
-  })
+  });
   
   poll.save();
   
@@ -168,7 +168,7 @@ app.post("/user/:username/add", function(req, res) {
   })
   
   
-})
+});
 
 // get information on a poll
 app.get("/poll/:poll_id/info", function(req, res) {
@@ -181,7 +181,7 @@ app.get("/poll/:poll_id/info", function(req, res) {
       if(err) throw err;
       res.json(doc);
   })
-})
+});
 
 // update an existing poll
 app.post("/user/:username/edit/:poll_id", function(req, res) {
@@ -213,7 +213,7 @@ app.post("/user/:username/edit/:poll_id", function(req, res) {
     if(err) throw err;
     res.end();
   })
-})
+});
 
 // delete a poll
 app.get("/user/:username/delete/:poll_id", function(req, res) {
@@ -224,7 +224,7 @@ app.get("/user/:username/delete/:poll_id", function(req, res) {
     poll_id: poll_id
   }, function(err, doc) {
     if(err) throw err;
-  })
+  });
   
   User.update({
     username: username
@@ -236,7 +236,7 @@ app.get("/user/:username/delete/:poll_id", function(req, res) {
     if(err) throw err;
     res.end();
   })
-})
+});
 
 // share a poll
 app.get("/user/:username/share/:poll_id", function(req, res) {
@@ -253,7 +253,7 @@ app.get("/user/:username/share/:poll_id", function(req, res) {
     if(err) throw err;
     res.end();
   })
-})
+});
 
 // UNshare a poll
 app.get("/user/:username/unshare/:poll_id", function(req, res) {
@@ -270,7 +270,7 @@ app.get("/user/:username/unshare/:poll_id", function(req, res) {
     if(err) throw err;
     res.end();
   })
-})
+});
 
 // in profile results
 app.get("/user/:username/results/:poll_id", function(req, res) {
@@ -287,7 +287,7 @@ app.get("/user/:username/results/:poll_id", function(req, res) {
       totalVotes: doc.totalVotes
     })
   })
-})
+});
 
 // general results (on request or post voting)
 app.get("/poll/:poll_id/results", function(req, res) {
@@ -302,13 +302,13 @@ app.get("/poll/:poll_id/results", function(req, res) {
       totalVotes: doc.totalVotes
     })
   })
-})
+});
 
 // record vote in poll
 // this is an awful way of doing this
 // need to store choices also with an id instead of just doing everything by strings
 // numbers >> strings
-// it also doesn't work in multi word choices (uhoh)
+// it also doesn't work in multi word choices
 // TODO
 app.get("/poll/:poll_id/vote/:choice", function(req, res) {
   var poll_id = req.params.poll_id;
@@ -324,7 +324,7 @@ app.get("/poll/:poll_id/vote/:choice", function(req, res) {
     }
   }, function(err, doc) {
     if(err) throw err;
-  })
+  });
   
   Poll.update({
     poll_id: poll_id,
@@ -337,7 +337,7 @@ app.get("/poll/:poll_id/vote/:choice", function(req, res) {
       if(err) throw err;
       res.end();
   })
-})
+});
 
 // non-author adding option
 app.post("/poll/:poll_id/new", function(req, res) {
@@ -363,8 +363,10 @@ app.post("/poll/:poll_id/new", function(req, res) {
       if(err) throw err;
       res.status(200).json({status:"ok"})
   })
-})
+});
 
 
 
-app.listen(process.env.PORT, process.env.IP);
+app.listen(4000, process.env.IP, function() {
+    console.log("Running on port " + 4000);
+});

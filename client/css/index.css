@@ -1,150 +1,111 @@
-/*
-* index.css
-* Ian Barker
-* used for index.jade
-*/
-
 body {
-    background-color: #FFD1AA;
-    color: #4F628E;
+    background-color: #E5E5FF;
 }
 
-.container-auto {
-    margin: 0 auto;
+#top {
+    background-color: #000;
+    border-bottom: 1px solid rgba(153, 153, 153, .5);
 }
 
-
-
-h1 {
-    margin-top: 100px;
-    margin-bottom: 50px;
-    font-weight: bold;
-    text-align: center;
-    font-size: 60px;
+#top h1 {
+    color: #fff;
+    float: left;
 }
 
-/* navigation-bar */
-.navigation-bar {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    
-    background: inherit;
+#top .navigation-bar {
+    float: right;
+    margin-top: 30px;
+    line-height: 39px;
+    height: 39px;
 }
 
-.navigation-bar-button {
-    color: #4F628E;
-    margin: 0 5px;
-    font-size: 16px;
+#top .navigation-bar ul {
+    list-style-image: none;
 }
 
-.navigation-bar-button:hover {
-    color: #0b0080;
-    cursor: pointer;
+#top .navigation-bar ul li {
+    display: inline;
+    margin: 10px;
+    font-size: 24px;
+    padding: 5px 7px 7px 7px;
+    border: none;
+    border-radius: 5px 5px 0 0;
 }
 
-#bottom {
-    height: 60vh;
-  
+#top .navigation-bar ul li:hover {
+    background-color: #E5E5FF;
 }
 
-#featuresLinks {
-    background-color: inherit;  
-    padding-bottom: 20px;
+#top .navigation-bar ul li a {
+    color: #fff;
 }
 
-/* features */
+#top .navigation-bar ul li:hover > a {
+    color: #000;
+    text-decoration: none;
+}
+
+#middle {
+    margin-top: 30px;
+}
+
 .features {
-    margin: 10px auto;
-    
+    margin: 15px;
+    text-align: center;
 }
 
+.feature-block, .fa-arrow-right {
+    display: inline-block;
+    margin: 10px;
+    vertical-align: middle;
+    font-size: 24px;
+}
 
+.fa-arrow-right {
+    font-size: 36px;
+}
 
 .feature-block {
-    width: 30%;
-    display: inline-block;
-}
-
-.feature-block, .arrow i {
-    vertical-align: middle;
-}
-
-.features .arrow {
-    width: 5%;
-    display: inline-block;
-    font-size: 60px;
+    height: 300px;
+    width: 300px;
     position: relative;
-    height: 250px;
-
-}
-
-
-.feature {
-    color: #ffffff;
-    background-color: #D49A6A;
-    
-    border: 2px solid #552700;
+    border: 2px solid #000;
     border-radius: 5px;
-    
-    font-size: 20px;
-    width: 250px;
-    height: 250px;
-    font-weight: 600;
-    
-    margin: 10px auto;
-    
-    display: table;
-    
-   
+    background-color: #EFEFFF;
 }
 
-.feature p {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+.feature-block .feature {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* links */
 .links {
-    margin: 5px auto;
     text-align: center;
+    margin: 30px;
 }
 
-.links-div {
+.links .links-div {
     display: inline-block;
+    margin: 5%;
+    background-color: #E1DBE7;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 1px #000;
 }
 
-.links p {
-    font-size: 25px;
-    margin: 15px;
-    color: #4F628E;
+.links .links-div p, .links .links-div a {
+    font-size: 30px;
 }
 
-.links .button {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 12px 5px;
-    margin: 3px 0;
-    font-size: 35px;
-}
 
-.button-right-rounded {
-    border-radius: 0 10px 10px 0;
-}
 
-#signupLinks {
-    background-color: #116611;
-}
-
-#signupLinks:hover, #signupLinks:active, #signupLinks:active:hover {
-    background-color: #55AA55;
-}
-
-#loginLinks {
-    background-color: #580101;
-}
-
-#loginLinks:hover, #loginLinks:active, #loginLinks:active:hover {
-    background-color: #AA3939;
+#footer {
+    text-align: center;
+    font-size: 11px;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
 }
