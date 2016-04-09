@@ -1,9 +1,9 @@
-$btnBackground: #B4DEB9;
-$btnBackgroundHover: #84C58C;
-$btnBorder: #2E8639;
+$btnBackground: #FFB44B;
+$btnBackgroundHover: #FFD59A;
+$btnBorder: #FBA224;
 
 body {
-    background-color: #E5E5FF;
+    background-color: #3D7BB2;
     font-size: 24px;
     
     .header-button, .choice-vote {
@@ -36,6 +36,7 @@ body {
             h1, h4 {
                 display: inline-block;
                 margin-right: 5px;
+                color: #fff;
             }
             
             h1 {
@@ -50,6 +51,7 @@ body {
                 a {
                     font-style: normal;
                     font-size: 16px;
+                    color: #fff;
                 }
             }
         }
@@ -57,23 +59,28 @@ body {
         .header-buttons {
             float: right;
             margin: 43px auto;
+
+            .header-button {
+                min-width: 128px;
+            }
         }
     }
     
     .body {
         .poll {
             margin: 1em auto;
-            background-color: #F5F6FA;
+            background-color: #FFE79A;
             border: 1px solid #000;
             border-radius: 5px;
             .question {
                 font-size: 30px;
-                background-color: #ACB5CF;
+                background-color: #6F6BD0;
                 margin: 0;
                 padding: 10px;
-                border-bottom: 1px solid #587272;
+                border-bottom: 1px solid #000;
                 border-radius: 5px 5px 0 0;
                 font-weight: 500;
+                color: #fff;
             }
             
             .poll-choices {
@@ -151,6 +158,28 @@ body {
                 .results-chart-form {
                     width: 50%;
                     float: right;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    body {
+        .header {
+            margin-bottom: 10px;
+            .title {
+                text-align: center;
+                display: block;
+            }
+
+            .header-buttons {
+                float: none;
+                display: block;
+                margin: 0 auto;
+
+                .header-button {
+                    margin: 5px;
                 }
             }
         }

@@ -1,13 +1,15 @@
-$btnBackground: #B4DEB9;
-$btnBackgroundHover: #84C58C;
-$btnBorder: #2E8639;
+$btnBackground: #FFB44B;
+$btnBackgroundHover: #FFD59A;
+$btnBorder: #FBA224;
 
 body {
-    background-color: #E5E5FF;
+    background-color: #3D7BB2;
     font-size: 24px;
+
     .header {
         text-align: center;
-        margin: 10px auto 100px auto;
+        margin: 10px auto 10px auto;
+        padding: 50px 0;
         h1, .header-buttons {
             display: inline-block;
             margin: 1rem auto;
@@ -15,22 +17,24 @@ body {
         }
         
         h1 {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: bold;
             font-style: italic;
+            color: #fff;
         }
         
         .header-buttons {
             float: right;
-            font-size: 16px;
+            font-size: 18px;
             
             .header-button {
-                line-height: 22px;
-                margin: 11px 10px;
+                min-width: 128px;
+                line-height: 38px;
+                margin: 0 30px;
                 background-color: $btnBackground;
                 color: #000;
-                border: 1px solid $btnBorder;
-                border-radius: 3px;
+                border: none;
+                border-radius: 6px;
                 font-weight: bold;
                 
                 &:hover {
@@ -43,21 +47,22 @@ body {
     .body {
         .poll-container {
             margin: 1em auto;
-            background-color: #F5F6FA;
+            background-color: #FFE79A;
             border: 1px solid #000;
             border-radius: 5px;
             h4 {
                 font-size: 30px;
-                background-color: #ACB5CF;
+                background-color: #6F6BD0;
                 margin: 0;
                 padding: 10px;
                 border-bottom: 1px solid #587272;
                 border-radius: 5px 5px 0 0;
+                color: #fff;
             }
             
             .polls {
                 .poll {
-                    padding: 5px 5px 4px 5px;
+                    padding: 9px 5px 8px 5px;
                     border-bottom: 1px solid #587272;
                     
                     &:last-child {

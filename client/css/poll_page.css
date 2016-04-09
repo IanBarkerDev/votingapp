@@ -1,17 +1,17 @@
 body {
-  background-color: #E5E5FF;
+  background-color: #3D7BB2;
   font-size: 24px; }
   body .header-button, body .choice-vote {
     margin-left: 10px;
     margin-right: 10px;
-    background-color: #B4DEB9;
+    background-color: #FFB44B;
     color: #000;
-    border: 1px solid #2E8639;
+    border: 1px solid #FBA224;
     border-radius: 3px;
     font-weight: normal;
     height: 41px; }
     body .header-button:hover, body .choice-vote:hover {
-      background-color: #84C58C;
+      background-color: #FFD59A;
       text-decoration: none; }
   body .header {
     text-align: center;
@@ -22,7 +22,8 @@ body {
       margin: 20px auto; }
     body .header .title h1, body .header .title h4 {
       display: inline-block;
-      margin-right: 5px; }
+      margin-right: 5px;
+      color: #fff; }
     body .header .title h1 {
       font-size: 40px;
       font-weight: bold;
@@ -31,23 +32,27 @@ body {
       font-style: italic; }
       body .header .title h4 a {
         font-style: normal;
-        font-size: 16px; }
+        font-size: 16px;
+        color: #fff; }
     body .header .header-buttons {
       float: right;
       margin: 43px auto; }
+      body .header .header-buttons .header-button {
+        min-width: 128px; }
   body .body .poll {
     margin: 1em auto;
-    background-color: #F5F6FA;
+    background-color: #FFE79A;
     border: 1px solid #000;
     border-radius: 5px; }
     body .body .poll .question {
       font-size: 30px;
-      background-color: #ACB5CF;
+      background-color: #6F6BD0;
       margin: 0;
       padding: 10px;
-      border-bottom: 1px solid #587272;
+      border-bottom: 1px solid #000;
       border-radius: 5px 5px 0 0;
-      font-weight: 500; }
+      font-weight: 500;
+      color: #fff; }
     body .body .poll .poll-choices .poll-choice {
       padding: 5px 5px 4px 5px;
       border-bottom: 1px solid #587272; }
@@ -92,5 +97,18 @@ body {
       body .body .poll .results .results-chart-form {
         width: 50%;
         float: right; }
+
+@media (max-width: 550px) {
+  body .header {
+    margin-bottom: 10px; }
+    body .header .title {
+      text-align: center;
+      display: block; }
+    body .header .header-buttons {
+      float: none;
+      display: block;
+      margin: 0 auto; }
+      body .header .header-buttons .header-button {
+        margin: 5px; } }
 
 /*# sourceMappingURL=poll_page.css.map */

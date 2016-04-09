@@ -1,44 +1,48 @@
 body {
-  background-color: #E5E5FF;
+  background-color: #3D7BB2;
   font-size: 24px; }
   body .header {
     text-align: center;
-    margin: 10px auto 100px auto; }
+    margin: 10px auto 10px auto;
+    padding: 50px 0; }
     body .header h1, body .header .header-buttons {
       display: inline-block;
       margin: 1rem auto;
       vertical-align: middle; }
     body .header h1 {
-      font-size: 40px;
+      font-size: 48px;
       font-weight: bold;
-      font-style: italic; }
+      font-style: italic;
+      color: #fff; }
     body .header .header-buttons {
       float: right;
-      font-size: 16px; }
+      font-size: 18px; }
       body .header .header-buttons .header-button {
-        line-height: 22px;
-        margin: 11px 10px;
-        background-color: #B4DEB9;
+        min-width: 128px;
+        line-height: 38px;
+        margin: 0 30px;
+        background-color: #FFB44B;
         color: #000;
-        border: 1px solid #2E8639;
-        border-radius: 3px;
+        border: none;
+        border-radius: 6px;
         font-weight: bold; }
         body .header .header-buttons .header-button:hover {
-          background-color: #84C58C; }
+          background-color: #FFD59A; }
   body .body .poll-container {
     margin: 1em auto;
-    background-color: #F5F6FA;
+    background-color: #FFE79A;
     border: 1px solid #000;
     border-radius: 5px; }
     body .body .poll-container h4 {
       font-size: 30px;
-      background-color: #ACB5CF;
+      background-color: #6F6BD0;
       margin: 0;
       padding: 10px;
       border-bottom: 1px solid #587272;
-      border-radius: 5px 5px 0 0; }
+      border-radius: 5px 5px 0 0;
+      color: #fff; }
     body .body .poll-container .polls .poll {
-      padding: 5px 5px 4px 5px;
+      padding: 9px 5px 8px 5px;
       border-bottom: 1px solid #587272; }
       body .body .poll-container .polls .poll:last-child {
         border-bottom: none; }
@@ -50,15 +54,15 @@ body {
       body .body .poll-container .polls .poll .poll-options {
         float: right; }
         body .body .poll-container .polls .poll .poll-options .poll-option {
-          background-color: #B4DEB9;
+          background-color: #FFB44B;
           border-radius: 3px;
-          border: 1px solid #2E8639;
+          border: 1px solid #FBA224;
           line-height: 24px;
           color: #000;
           font-weight: 300;
           margin: 0 3px; }
           body .body .poll-container .polls .poll .poll-options .poll-option:hover {
-            background-color: #84C58C; }
+            background-color: #FFD59A; }
           body .body .poll-container .polls .poll .poll-options .poll-option.share, body .body .poll-container .polls .poll .poll-options .poll-option.unshare {
             width: 74.0625px; }
   body .all-modal {
@@ -102,12 +106,12 @@ body {
               width: 250px;
               color: #000; }
           body .all-modal .indiv-modal.new-poll form .form-button, body .all-modal .indiv-modal.edit-poll form .form-button {
-            background-color: #B4DEB9;
+            background-color: #FFB44B;
             color: #000;
-            border: 1px solid #2E8639;
+            border: 1px solid #FBA224;
             width: 140.25px; }
             body .all-modal .indiv-modal.new-poll form .form-button:hover, body .all-modal .indiv-modal.edit-poll form .form-button:hover {
-              background-color: #84C58C; }
+              background-color: #FFD59A; }
           body .all-modal .indiv-modal.new-poll form .choice-appended, body .all-modal .indiv-modal.edit-poll form .choice-appended {
             display: block;
             margin: 4px auto;
