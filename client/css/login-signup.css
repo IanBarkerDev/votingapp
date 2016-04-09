@@ -1,35 +1,47 @@
 body {
-    background-color: #E5E5FF;
+    background-color: #3D7BB2;
+    position: relative;
+}
+
+#login-signup {
+    margin-top: 50px;
 }
 
 h1 {
-    margin-top: 50px;
-    font-size: 40px;
+    color: #fff;
 }
 
-.div-form {
-    margin: 25px 0;
-}
-
-.form-label, .form-input {
+form .form-input {
     display: block;
+    margin: 10px 0 10px 10px;
 }
 
-.form-button {
-    margin: 15px 0;
+form .form-button {
+    background-color: #FFB44B;
+    margin-left: 10px;
+    min-width: 161px;
+    line-height: 38px;
+    border-radius: 6px;
+    color: #1D198E;
+    font-size: 20px;
     border: none;
-    background-color: #fff;
-    box-shadow: 2px 2px 1px 1px #000;
 }
 
-.form-button:hover, .form-button:active {
-    background-color: #E5E5FF;
-}
-
-.form-button:active {
-    box-shadow: -1px -1px 1px 1px #000;
+form .form-button:hover {
+    background-color: #FFD59A;
+    text-decoration: none;
 }
 
 .switch {
-    font-size: 20px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.switch a {
+    color: #fff;
+}
+
+.switch a:hover {
+    color: #F7F7F7;
+    text-decoration: underline;
 }
