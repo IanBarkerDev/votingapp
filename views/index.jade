@@ -12,30 +12,50 @@ body
          h1 Welcome to Voting App!
          div.navigation-bar
             ul
-               li
-                  a.navigation-bar-button#loginFixed(href="/login.html") Log In
-               li
-                  a.navigation-bar-button#signupFixed(href="/signup.html") Sign Up
+               a.navigation-bar-button#signupFixed(href="/signup.html") Sign Up
+               a.navigation-bar-button#loginFixed(href="/login.html") Log In
    div.container-fluid#middle
       div.container#featuresLinks
          div.features
             div.feature-block
+               i.feature-img.fa.fa-list
                div.feature
-                  p Make polls quickly and easily with the ability to change them later.
-            i.fa.fa-arrow-right
+                  h3 Make polls
+                  div.feature-list
+                    p Create unlimited polls
+                    p Add as many options are you require
+                    p Able to edit polls later
             div.feature-block
+               i.feature-img.fa.fa-share-alt
                div.feature
-                  p Share polls with the click of a button whether to let anyone vote on them.
-            i.fa.fa-arrow-right
+                  h3 Share polls
+                  div.feature-list
+                     p Toggle polls are viewable or not by others
+                     p Get a permanent link to share
+                     p Close them when done to review the results
             div.feature-block
+               i.feature-img.fa.fa-pie-chart
                div.feature
-                  p View results in multiple ways for every individual poll.
+                  h3 View results
+                  div.feature-list
+                     p List format with percentages always updated
+                     p Chart format for visual readings
+                     p You can view results at any time
+                     p Others can view only after they have voted
+             div.feature-block
+                i.feature-img.fa.fa-heart
+                div.feature
+                   h3 User Bonuses
+                   div.feature-list
+                      p Members can add additional options to a poll
+                      p Keep track of all of their own polls
+                      p Absolutely free forever
          div.links
-            div.links-div
+            div.link
                p Ready To Get Started?
                a.button#signupLinks(href="/signup.html") Sign Up Now!
-            div.links-div
+            div.link
                p Already have an account?
                a.button#loginLinks(href="/login.html") Log In Here!
-      div.container#footer
+      footer
          p &copy; 2016 Ian Barker

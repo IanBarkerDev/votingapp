@@ -1,113 +1,158 @@
-body {
-    background-color: #E5E5FF;
-    position: relative;
-    min-height: 100vh;
-}
-
 #top {
-    background-color: #000;
-    border-bottom: 1px solid rgba(153, 153, 153, .5);
+    background-color: #3D7BB2;
+    color: #fff;
+    text-align: center;
+    height: 40vh;
+    position: relative;
 }
 
 #top h1 {
-    color: #fff;
-    float: left;
-}
-
-#top .navigation-bar {
-    float: right;
-    margin-top: 30px;
-    line-height: 39px;
-    height: 39px;
-}
-
-#top .navigation-bar ul {
-    list-style-image: none;
-}
-
-#top .navigation-bar ul li {
-    display: inline;
-    margin: 10px;
-    font-size: 24px;
-    padding: 5px 7px 7px 7px;
-    border: none;
-    border-radius: 5px 5px 0 0;
-}
-
-#top .navigation-bar ul li:hover {
-    background-color: #E5E5FF;
-}
-
-#top .navigation-bar ul li a {
-    color: #fff;
-}
-
-#top .navigation-bar ul li:hover > a {
-    color: #000;
-    text-decoration: none;
-}
-
-#middle {
-    margin-top: 30px;
-}
-
-.features {
-    margin: 15px;
-    text-align: center;
-}
-
-.feature-block, .fa-arrow-right {
-    display: inline-block;
-    margin: 10px;
-    vertical-align: middle;
-    font-size: 24px;
-}
-
-.fa-arrow-right {
-    font-size: 36px;
-}
-
-.feature-block {
-    height: 300px;
-    width: 300px;
-    position: relative;
-    border: 2px solid #000;
-    border-radius: 5px;
-    background-color: #EFEFFF;
-}
-
-.feature-block .feature {
+    font-size: 48px;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.links {
-    text-align: center;
-    margin: 30px;
-}
-
-.links .links-div {
-    display: inline-block;
-    margin: 5%;
-    background-color: #E1DBE7;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 2px 2px 2px 1px #000;
-}
-
-.links .links-div p, .links .links-div a {
-    font-size: 30px;
-}
-
-
-
-#footer {
-    text-align: center;
-    font-size: 11px;
+#top .navigation-bar {
     position: absolute;
-    bottom: 1%;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#top .navigation-bar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#top .navigation-bar ul a {
+    display: inline-block;
+    background-color: #FFB44B;
+    margin: 0 30px;
+    min-width: 128px;
+    line-height: 38px;
+    border-radius: 6px;
+    color: #1D198E;
+    font-size: 20px;
+}
+
+#top .navigation-bar ul a:hover {
+    background-color: #FFD59A;
+    text-decoration: none;
+}
+
+#middle {
+    background-color: #6F6BD0;
+    min-height: 75vh;
+    padding: 0;
+    position: relative;
+}
+
+#featuresLinks {
+    padding: 0;
+    margin: auto 0;
+    width: 100%;
+}
+
+.features {
+    text-align: center;
+}
+
+.feature-block {
+    padding: 40px 20px;
+    position: relative;
+}
+
+.feature-block:nth-child(odd) {
+    background-color: #F7F7F7;
+}
+
+.feature-block:nth-child(even) {
+    background-color: #fff;
+}
+
+.feature-block:nth-child(odd) .feature {
+    margin-right: 50%;
+}
+
+.feature-block:nth-child(odd) .feature-img {
+    left: 75%;
+}
+
+.feature-block:nth-child(even) .feature {
+    margin-left: 50%;
+}
+
+.feature-block:nth-child(even) .feature-img {
+    left: 25%;
+}
+
+.feature-block .feature-img {
+    font-size: 90px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.feature-block h3 {
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+.feature-block .feature-list {
+    text-align: center;
+    display: block;
+}
+
+.feature-block p {
+    text-align: center;
+    font-style: italic;
+}
+
+.links {
+    padding: 40px 20px 60px 20px;
+}
+
+.links .link {
+    display: inline-block;
+    margin: 30px;
+    text-align: center;
+}
+
+.links .link:nth-child(1) {
+    margin-left: 15%;
+}
+
+.links .link:nth-child(2) {
+    margin-right: 15%;
+    float: right;
+}
+
+.links .link p {
+    font-size: 28px;
+    color: #F7F7F7;
+    margin-bottom: 30px;
+}
+
+.links .link .button {
+    background-color: #FFC36E;
+    line-height: 38px;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: #000;
+}
+
+.links .link .button:hover {
+    background-color: #FFD59A;
+    text-decoration: none;
+}
+
+footer {
+    color: #F7F7F7;
+    position: absolute;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
 }
